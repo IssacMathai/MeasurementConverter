@@ -2,7 +2,7 @@ from tkinter import *
 import random
 
 
-class Foo:
+class Welcome_Screen:
     def __init__(self, parent):
         print("hello world")
 
@@ -11,5 +11,5 @@ class Foo:
 if __name__ == "__main__":
     root = Tk()
     root.title("title goes here")
-    something = Foo(root)
-    root.mainloop()
+    something = Welcome_Screen()
+    root.mainloop()                                 
