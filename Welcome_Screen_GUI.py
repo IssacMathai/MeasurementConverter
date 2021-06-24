@@ -6,8 +6,10 @@ import random
 class Welcome_Screen:
     def __init__(self, parent):
         # Formatting variables
-
-        # Welcome Screen Frame
+        background_colour = "light blue"
+        # Frame
+        self.converter_frame = Frame(width=200, height=200, bg=background_colour, pady=10)
+        self.converter_frame.grid()
 
         # Main Heading (row 0)
 
