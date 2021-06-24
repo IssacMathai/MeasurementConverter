@@ -11,5 +11,5 @@ class Welcome_Screen:
 if __name__ == "__main__":
     root = Tk()
     root.title("title goes here")
-    something = Welcome_Screen()
+    something = Welcome_Screen(root)
     root.mainloop()                                 
