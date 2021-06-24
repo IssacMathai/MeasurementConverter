@@ -10,6 +10,6 @@ class Welcome_Screen:
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("title goes here")
+    root.title("Measurement Converter Tool")
     something = Welcome_Screen(root)
     root.mainloop()                                 
