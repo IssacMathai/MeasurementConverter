@@ -19,10 +19,12 @@ class Welcome_Screen:
         self.measurement_converter_label.grid(row=0)
 
         # Centimetres and Inches Button (row 1)
-        self.centimetres_and_inches_converter_button = Button(self.converter_frame, text="Centimetres and Inches", padx=10, pady=10)
-        self.centimetres_and_inches_converter_button.grid(row=1)
+        self.cm_and_in_converter_button = Button(self.converter_frame, text="Centimetres and Inches", padx=10, pady=10)
+        self.cm_and_in_converter_button.grid(row=1)
 
         # Metres and Feet Button (row 1)
+        self.m_and_ft_converter_button = Button(self.converter_frame, text="Metres and Inches", padx=10, pady=10)
+        self.m_and_ft_converter_button.grid(row=1,column=1)
 
 
 
