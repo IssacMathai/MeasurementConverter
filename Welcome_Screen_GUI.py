@@ -15,10 +15,7 @@ class Welcome_Screen:
         self.welcome_screen_frame.grid()
 
         # Main Heading (row 0)
-        self.measurement_welcome_screen_label = Label(self.welcome_screen_frame, text = "Measurement Converter",
-            font=("Arial", "20", "bold"),
-            bg=background_colour,
-            padx=10, pady=10)
+        self.measurement_welcome_screen_label = Label(self.welcome_screen_frame, text = "Measurement Converter", font=("Arial", "20", "bold"), bg=background_colour, padx=10, pady=10)
         self.measurement_welcome_screen_label.grid(row=0)
 
         # Welcome Screen Buttons Frame
