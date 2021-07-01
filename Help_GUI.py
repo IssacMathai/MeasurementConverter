@@ -13,5 +13,5 @@ class Help:
 if __name__ == "__main__":
     root = Tk()
     root.title("Measurement Converter Tool")
-    something = Help(root)
+    something = Welcome_Screen(root)
     root.mainloop()              
