@@ -17,7 +17,7 @@ class Welcome_Screen:
         self.measurement_welcome_screen_label.grid(row=0)
 
         # Centimetres and Inches Button (row 1)
-        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_frame, text="Centimetres and Inches", font=("Arial", "14"), padx=10, pady=10)
+        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_frame, text="Centimetres and Inches", font=("Arial", "14"), command=self.Centimetres_and_Inches_Converter, padx=10, pady=10)
         self.cm_and_in_welcome_screen_button.grid(row=1)
 
     def Centimetres_and_Inches_Converter(self):
