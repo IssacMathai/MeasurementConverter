@@ -5,10 +5,10 @@ import random
 class Welcome_Screen:
     def __init__(self, partner):
         
-        # Formatting variables...
+        # Formatting variables
         background_color = "light blue"
         
-        # Welcome Screen GUI...
+        # Welcome Screen GUI
         self.welcome_screen_frame = Frame(width=600, height=600, bg=background_color, pady=10)
         self.welcome_screen_frame.grid()
 
@@ -26,8 +26,17 @@ class Welcome_Screen:
 
 class Centimetres_and_Inches_Converter:
     def __init__(self):
-
+        
+        # Formatting variables
         background = "lime green"
+
+        # Centimetres and Inches Converter child window
+
+        # GUI Frame
+
+
+
+
 # main routine
 if __name__ == "__main__":
     root = Tk()
