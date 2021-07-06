@@ -31,8 +31,11 @@ class Centimetres_and_Inches_Converter:
         background = "lime green"
 
         # Centimetres and Inches Converter child window
+        self.Centimetres_and_Inches_Converter_box = Toplevel()
 
         # GUI Frame
+        self.Centimetres_and_Inches_Converter_frame = Frame(self.Centimetres_and_Inches_Converter_box, bg=background)
+        self.Centimetres_and_Inches_Converter_frame.grid()
 
 
 
