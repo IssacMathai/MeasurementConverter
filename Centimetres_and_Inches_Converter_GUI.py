@@ -20,7 +20,14 @@ class Welcome_Screen:
         self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_frame, text="Centimetres and Inches", font=("Arial", "14"), padx=10, pady=10)
         self.cm_and_in_welcome_screen_button.grid(row=1)
 
+    def Centimetres_and_Inches_Converter(self):
+        get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self)
+        get_Centimetres_and_Inches_Converter.Centimetres_and_Inches_Converter_text.configure(text="text goes here")
 
+class Centimetres_and_Inches_Converter:
+    def __init__(self):
+
+        background = "lime green"
 # main routine
 if __name__ == "__main__":
     root = Tk()
@@ -28,4 +35,3 @@ if __name__ == "__main__":
     something = Welcome_Screen(root)
     root.mainloop()
 
-    
