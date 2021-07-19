@@ -25,7 +25,7 @@ class Welcome_Screen:
         get_Centimetres_and_Inches_Converter.Centimetres_and_Inches_Converter_text.configure(text="text goes here")
 
 class Centimetres_and_Inches_Converter:
-    def __init__(self):
+    def __init__(self, partner):
         
         # Formatting variables
         background = "lime green"
@@ -34,7 +34,7 @@ class Centimetres_and_Inches_Converter:
         self.Centimetres_and_Inches_Converter_box = Toplevel()
 
         # GUI Frame
-        self.Centimetres_and_Inches_Converter_frame = Frame(self.Centimetres_and_Inches_Converter_box, bg=background)
+        self.Centimetres_and_Inches_Converter_frame = Frame(self.Centimetres_and_Inches_Converter, bg=background)
         self.Centimetres_and_Inches_Converter_frame.grid()
 
 
