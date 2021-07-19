@@ -30,12 +30,23 @@ class Centimetres_and_Inches_Converter:
         # Formatting variables
         background = "lime green"
 
+        # disable Centimetres and Inches button while window is open
+        partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
+
         # Centimetres and Inches Converter child window
         self.Centimetres_and_Inches_Converter_box = Toplevel()
+        
+        # If users press cross at top, closes Centimetres_and_Inches_Converter and 'releases' Centimetres_and_Inches_Converter button
+
 
         # GUI Frame
-        self.Centimetres_and_Inches_Converter_frame = Frame(self.Centimetres_and_Inches_Converter, bg=background)
+        self.Centimetres_and_Inches_Converter_frame = Frame(self.Centimetres_and_Inches_Converter_box, bg=background)
         self.Centimetres_and_Inches_Converter_frame.grid()
+
+        # Set up Centimetres_and_Inches_Converter heading (row 0)
+        self.Centimetres_and_Inches_Converter_heading = Label(self.Centimetres_and_Inches_Converter_frame, text="Centimetres and Inches Converter",
+                                 font="arial 18 bold", bg=background)
+        self.Centimetres_and_Inches_Converter_heading.grid(row=0)
 
 
 
