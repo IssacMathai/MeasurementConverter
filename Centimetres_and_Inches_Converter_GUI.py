@@ -43,10 +43,17 @@ class Centimetres_and_Inches_Converter:
         self.Centimetres_and_Inches_Converter_frame = Frame(self.Centimetres_and_Inches_Converter_box, bg=background)
         self.Centimetres_and_Inches_Converter_frame.grid()
 
-        # Set up Centimetres_and_Inches_Converter heading (row 0)
+        # Centimetres and Inches Converter heading (row 0)
         self.Centimetres_and_Inches_Converter_heading = Label(self.Centimetres_and_Inches_Converter_frame, text="Centimetres and Inches Converter",
-                                 font="arial 18 bold", bg=background)
+                                 font="arial 18 bold", bg=background, padx=10, pady=10)
         self.Centimetres_and_Inches_Converter_heading.grid(row=0)
+
+        #User instructions (row 1)
+        self.cm_and_in_instructions_label = Label(self.Centimetres_and_Inches_Converter_frame, text="Type in a measurement below and push the button you wish to convert the measurement to.",
+                                        font="Arial 10 italic", wrap=290,
+                                         justify=CENTER, bg=background,
+                                        padx=10, pady=10)
+        self.cm_and_in_instructions_label.grid(row=1)
 
 
 
