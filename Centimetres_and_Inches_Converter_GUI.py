@@ -47,12 +47,16 @@ class Centimetres_and_Inches_Converter:
                                  font="arial 18 bold", bg=background, padx=10, pady=10)
         self.cm_and_in_heading.grid(row=0)
 
-        #User instructions (row 1)
+        # User instructions (row 1)
         self.cm_and_in_instructions_label = Label(self.cm_and_in_frame, text="Type in a measurement below and push the button you wish to convert the measurement to.",
                                         font="Arial 10 italic", wrap=300,
                                          justify=CENTER, bg=background,
                                         padx=10, pady=10)
         self.cm_and_in_instructions_label.grid(row=1)
+
+        # Measurement input box (row 2)
+        self.to_convert_input = Entry(self.cm_and_in_frame, width=20, font="Arial 20 bold")
+        self.to_convert_input.grid(row=2)
 
 
 
