@@ -22,7 +22,6 @@ class Welcome_Screen:
 
     def Centimetres_and_Inches_Converter(self):
         get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self)
-        get_Centimetres_and_Inches_Converter.Centimetres_and_Inches_Converter_text.configure(text="text goes here")
 
 class Centimetres_and_Inches_Converter:
     def __init__(self, partner):
@@ -34,22 +33,22 @@ class Centimetres_and_Inches_Converter:
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
 
         # Centimetres and Inches Converter child window
-        self.Centimetres_and_Inches_Converter_box = Toplevel()
+        self.cm_and_in_box = Toplevel()
         
-        # If users press cross at top, closes Centimetres_and_Inches_Converter and 'releases' Centimetres_and_Inches_Converter button
+        # If users press cross at top, closes window and re-enables Centimetres and Inches button
 
 
         # GUI Frame
-        self.Centimetres_and_Inches_Converter_frame = Frame(self.Centimetres_and_Inches_Converter_box, bg=background)
-        self.Centimetres_and_Inches_Converter_frame.grid()
+        self.cm_and_in_frame = Frame(self.cm_and_in_box, bg=background)
+        self.cm_and_in_frame.grid()
 
         # Centimetres and Inches Converter heading (row 0)
-        self.Centimetres_and_Inches_Converter_heading = Label(self.Centimetres_and_Inches_Converter_frame, text="Centimetres and Inches Converter",
+        self.cm_and_in_heading = Label(self.cm_and_in_frame, text="Centimetres and Inches Converter",
                                  font="arial 18 bold", bg=background, padx=10, pady=10)
-        self.Centimetres_and_Inches_Converter_heading.grid(row=0)
+        self.cm_and_in_heading.grid(row=0)
 
         #User instructions (row 1)
-        self.cm_and_in_instructions_label = Label(self.Centimetres_and_Inches_Converter_frame, text="Type in a measurement below and push the button you wish to convert the measurement to.",
+        self.cm_and_in_instructions_label = Label(self.cm_and_in_frame, text="Type in a measurement below and push the button you wish to convert the measurement to.",
                                         font="Arial 10 italic", wrap=300,
                                          justify=CENTER, bg=background,
                                         padx=10, pady=10)
