@@ -73,8 +73,16 @@ class Centimetres_and_Inches_Converter:
         self.to_in_button.grid(row=3,column=1)
 
         # Conversion Result subheading (row 4)
-        self.cm_and_in_result_subheading_label = Label(self.cm_and_in_frame, font="Arial 14", bg=background, padx=10, pady=10, text="Conversion Result:")
+        self.cm_and_in_result_subheading_label = Label(self.cm_and_in_frame, font="Arial 14", bg=background, pady=10, text="Conversion Result:")
         self.cm_and_in_result_subheading_label.grid(row=4)
+
+        # Conversion Result (row 5)
+        self.cm_and_in_result_label = Label(self.cm_and_in_frame, font = "Arial 11 bold", bg=background, fg="blue", pady=10, text="placeholder result")
+        self.cm_and_in_result_label.grid(row=5)
+
+        # Conversion History, Help and Dismiss buttons frame (row 6)
+        self.cm_and_in_history_help_dismiss_frame = Frame(self.cm_and_in_frame)
+        self.cm_and_in_history_help_dismiss_frame.grid(row=6, pady=10)
 
 
 
