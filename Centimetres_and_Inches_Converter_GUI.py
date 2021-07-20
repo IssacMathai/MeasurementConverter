@@ -38,7 +38,7 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_box = Toplevel()
         
         # If users press cross at top, closes window and re-enables Centimetres and Inches button
-
+        self.cm_and_in_box.protocol('WM_DELETE_WINDOW', partial(self.close_Centimetres_and_Inches_Converter, partner))
 
         # GUI Frame
         self.cm_and_in_frame = Frame(self.cm_and_in_box, bg=background)
@@ -93,8 +93,17 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_help_button.grid(row=6,column=1)
 
         # Dismiss button (row 6)
-        self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", bg="grey", padx=10, pady=10)
+        self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame,
+                                                                                                 text="Dismiss", font="Arial 10 bold", 
+                                                                                                 bg="grey", 
+                                                                                                 command=partial(self.close_Centimetres_and_Inches_Converter, partner),
+                                                                                                 padx=10, pady=10)
         self.cm_and_in_dismiss_button.grid(row=6,column=2)
+
+    def close_Centimetres_and_Inches_Converter(self, partner):
+        # Put "Centimetres and Inches" button in welcome screen back to normal... 
+        partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
+        self.cm_and_in_box.destroy()
 
 
 
