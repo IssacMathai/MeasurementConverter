@@ -29,6 +29,7 @@ class Centimetres_and_Inches_Converter:
         # Formatting variables
         background = "lime green"
         to_cm_button_background = "yellow"
+        to_in_button_background = "tomato"
 
         # disable Centimetres and Inches button while window is open
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
@@ -66,6 +67,10 @@ class Centimetres_and_Inches_Converter:
         # To Centimetres button (row 3)
         self.to_cm_button = Button(self.to_cm_and_in_buttons_frame, text="To Centimetres", font="Arial 10 bold", bg=to_cm_button_background, padx=10, pady=10)
         self.to_cm_button.grid(row=3, column=0)
+
+        # To Inches button (row 3)
+        self.to_in_button = Button(self.to_cm_and_in_buttons_frame, text="To Inches", font="Arial 10 bold", bg=to_in_button_background, padx=10, pady=10)
+        self.to_in_button.grid(row=3,column=1)
 
 
 
