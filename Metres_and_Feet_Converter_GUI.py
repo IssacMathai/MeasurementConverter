@@ -27,9 +27,9 @@ class Metres_and_Feet_Converter:
     def __init__(self, partner):
         
         # Formatting variables
-        background = "lime green"
-        to_m_button_background = "yellow"
-        to_ft_button_background = "tomato"
+        background = "orange"
+        to_m_button_background = "dark orchid"
+        to_ft_button_background = "green"
 
         # disable Metres and Feet button while window is open
         partner.m_and_ft_welcome_screen_button.config(state=DISABLED)
