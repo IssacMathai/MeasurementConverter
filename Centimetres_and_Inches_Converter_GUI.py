@@ -81,8 +81,20 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_result_label.grid(row=5)
 
         # Conversion History, Help and Dismiss buttons frame (row 6)
-        self.cm_and_in_history_help_dismiss_frame = Frame(self.cm_and_in_frame)
-        self.cm_and_in_history_help_dismiss_frame.grid(row=6, pady=10)
+        self.cm_and_in_history_help_dismiss_buttons_frame = Frame(self.cm_and_in_frame)
+        self.cm_and_in_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
+
+        # Conversion History button (row 6)
+        self.cm_and_in_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", padx=10, pady=10)
+        self.cm_and_in_history_button.grid(row=6,column=0)
+
+        # Help button (row 6)
+        self.cm_and_in_help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", padx=10, pady=10)
+        self.cm_and_in_help_button.grid(row=6,column=1)
+
+        # Dismiss button (row 6)
+        self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", bg="grey", padx=10, pady=10)
+        self.cm_and_in_dismiss_button.grid(row=6,column=2)
 
 
 
