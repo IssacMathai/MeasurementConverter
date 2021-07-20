@@ -72,6 +72,10 @@ class Centimetres_and_Inches_Converter:
         self.to_in_button = Button(self.to_cm_and_in_buttons_frame, text="To Inches", font="Arial 10 bold", bg=to_in_button_background, padx=10, pady=10)
         self.to_in_button.grid(row=3,column=1)
 
+        # Conversion Result subheading (row 4)
+        self.cm_and_in_result_subheading_label = Label(self.cm_and_in_frame, font="Arial 14", bg=background, padx=10, pady=10, text="Conversion Result:")
+        self.cm_and_in_result_subheading_label.grid(row=4)
+
 
 
 
