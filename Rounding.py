@@ -1,12 +1,6 @@
 # Input number
-number = input("Enter a number")
-print(number)
+numbers = [5,33.3333,0.8888,0]
+print(numbers)
 
-# Convert to float
-try:
-    new_number = float(number)
-    print(new_number)
-# Round up to two decimal places
-except ValueError:
-    print("{:.2f}".format(new_number))
+
 
