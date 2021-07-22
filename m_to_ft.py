@@ -1,4 +1,4 @@
-# List of measurements m metres
+# List of measurements in metres
 measurements = [5, 33.3, 5200]
 converted = []
 
