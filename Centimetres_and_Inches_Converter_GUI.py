@@ -31,7 +31,7 @@ class Centimetres_and_Inches_Converter:
         to_cm_button_background = "yellow"
         to_in_button_background = "tomato"
 
-        # disable Centimetres and Inches button while window is open
+        # disable Centimetres and Inches button when window is opened
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
 
         # Centimetres and Inches Converter child window
