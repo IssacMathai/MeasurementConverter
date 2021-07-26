@@ -83,12 +83,12 @@ class Help:
         self.help_heading.grid(row=0)
 
         # Help text (row 1)
-        self.help_text = Label(self.help_frame, text="Enter a number into the input box and then click on one of the two buttons underneath"
-                                                     "to convert the measurement. Ensure your number is greater than 0, or an error will be"
-                                                     "returned. Do not enter letters into the input box."
-                                                     "E.g. If you wish to convert to centimetres, type in a measurement in inches and click"
+        self.help_text = Label(self.help_frame, text="Enter a number into the input box and then click on one of the two buttons underneath "
+                                                     "to convert the measurement. Ensure your number is greater than 0, or an error will be "
+                                                     "returned. Do not enter letters into the input box. "
+                                                     "\n\nE.g. If you wish to convert to centimetres, type in a measurement in inches and click "
                                                      "the 'To Centimetres' button. ",
-                                 justify=LEFT, width=40, bg=help_background, wrap=250)
+                                 justify=CENTER, width=40, bg=help_background, wrap=250)
         self.help_text.grid(row=1)
 
 
