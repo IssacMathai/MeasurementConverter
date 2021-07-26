@@ -88,7 +88,7 @@ class Help:
                                                      "returned. Do not enter letters into the input box. "
                                                      "\n\nE.g. If you wish to convert to centimetres, type in a measurement in inches and click "
                                                      "the 'To Centimetres' button. ",
-                                 justify=CENTER, width=40, bg=help_background, wrap=250)
+                                 justify=CENTER, width=60, bg=help_background, wrap=400)
         self.help_text.grid(row=1)
 
 
