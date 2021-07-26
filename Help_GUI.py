@@ -63,6 +63,7 @@ class Help:
     def __init__(self, partner):
 
         # Formatting variables
+        help_background = "grey"
 
         # Disable Help button while window is open
         partner.help_button.config(state=DISABLED)
@@ -74,11 +75,11 @@ class Help:
         self.help_box.protocol('WM_DELETE_WINDOW', partial(self.close_Help, partner))
 
         # GUI Frame
-        self.help_frame = Frame(self.help_box, bg=background)
+        self.help_frame = Frame(self.help_box, bg=help_background)
         self.help_frame.grid()
 
         # Help heading (row 0)
-        self.help_heading = Label(self.help_frame, text="Help", font="Arial 18 bold", bg="grey", padx=10, pady=10)
+        self.help_heading = Label(self.help_frame, text="Help", font="arial 18 bold", bg=help_background)
         self.help_heading.grid(row=0)
 
 
