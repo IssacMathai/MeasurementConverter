@@ -63,15 +63,30 @@ class Help:
     def __init__(self, partner):
 
         # Formatting variables
-        background = "grey" 
 
+        # Disable Help button while window is open
+        partner.help_button.config(state=DISABLED)
+         
         # Help GUI child window
         self.help_box = Toplevel()
+
+        # If users press cross at top, closes window and re-enables Help button
+        self.help_box.protocol('WM_DELETE_WINDOW', partial(self.close_Help, partner))
 
         # GUI Frame
         self.help_frame = Frame(self.help_box, bg=background)
         self.help_frame.grid()
 
+        # Help heading (row 0)
+        self.help_heading = Label(self.help_frame, text="Help", font="Arial 18 bold", bg="grey", padx=10, pady=10)
+        self.help_heading.grid(row=0)
+
+
+
+    def close_Help(self, partner):
+        # Put "Help" button in converter back to normal... 
+        partner.help_button.config(state=NORMAL)
+        self.help_box.destroy()
 
 
 
