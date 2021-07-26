@@ -48,14 +48,31 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_heading.grid(row=0)
 
         # Help Button
-        self.help_button = Button(self.cm_and_in_frame, text="Help", font=("Arial", "14"), padx=10, pady=10)
+        self.help_button = Button(self.cm_and_in_frame, text="Help", font=("Arial", "14"), command=self.Help, padx=10, pady=10)
         self.help_button.grid(row=1)
-
 
     def close_Centimetres_and_Inches_Converter(self, partner):
         # Put "Centimetres and Inches" button in welcome screen back to normal... 
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
+
+    def Help(self):
+        get_Help = Help(self)
+
+class Help:
+    def __init__(self, partner):
+
+        # Formatting variables
+        background = "grey" 
+
+        # Help GUI child window
+        self.help_box = Toplevel()
+
+        # GUI Frame
+        self.help_frame = Frame(self.help_box, bg=background)
+        self.help_frame.grid()
+
+
 
 
 
