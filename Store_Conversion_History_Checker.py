@@ -12,9 +12,13 @@ while get_value !="done":
     measurements.append(get_value)
 
 
-# Print whole list
-print("Whole List:")
-print(measurements)
+if len(measurements) == 0:
+    print("There are no measurements to display")
+
+else:
+    # Print whole list
+    print("Whole List:")
+    print(measurements)
 
 # Print most recent 4 values
 print("Most recent 4 values:")
