@@ -47,17 +47,23 @@ class Centimetres_and_Inches_Converter:
                                  font="arial 18 bold", bg=background, padx=10, pady=10)
         self.cm_and_in_heading.grid(row=0)
 
-        # Help Button
-        self.help_button = Button(self.cm_and_in_frame, text="Help", font=("Arial", "14"), command=self.Help, padx=10, pady=10)
-        self.help_button.grid(row=1)
+        # Conversion History Button
+        self.conversion_history_button = Button(self.cm_and_in_frame, text="Conversion History", font=("Arial", "14"), command=self.Conversion_History, padx=10, pady=10)
+        self.conversion_history_button.grid(row=1)
 
     def close_Centimetres_and_Inches_Converter(self, partner):
         # Put "Centimetres and Inches" button in welcome screen back to normal... 
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
 
-    def Help(self):
-        get_Help = Help(self)
+    def Conversion_History(self):
+        get_Conversion_History = Conversion_History(self)
+
+class Conversion_History:
+    def __init__(self, partner):
+
+        # Formatting variables
+        ch_background = "purple"
 
 
 
