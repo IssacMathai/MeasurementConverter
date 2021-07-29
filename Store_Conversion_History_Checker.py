@@ -2,14 +2,14 @@
 measurements = []
 
 # User inputs values
-get_value = ""
-while get_value !="done":
-    get_value = input("Enter a value:")
+new_value = ""
+while new_value !="done":
+    new_value = input("Enter a value:")
     # When user inputs "done", stop asking for input
-    if get_value == "done":
+    if new_value == "done":
         break
 
-    measurements.append(get_value)
+    measurements.append(new_value)
 
 # If list is empty, print message
 if len(measurements) == 0:
@@ -31,4 +31,4 @@ if len(measurements) >=4:
 else:
     print("Most recent values:")
     for value in measurements:
-        print(measurements[len(measurements) - value - 1])
+        print(measurements[len(measurements) - measurements.index(value) - 1])
