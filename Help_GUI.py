@@ -99,7 +99,7 @@ class Help:
 
 
     def close_Help(self, partner):
-        # Put "Help" button in converter back to normal... 
+        # Restore Help button in centimetres and inches converter
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
 
