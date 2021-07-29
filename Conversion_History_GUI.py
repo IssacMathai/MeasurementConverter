@@ -65,6 +65,24 @@ class Conversion_History:
         # Formatting variables
         ch_background = "purple"
 
+        # Disable Conversion History button while window is open
+        partner.conversion_history_button.config(state=DISABLED)
+
+        # Conversion History GUI child window
+        self.conversion_history_box = Toplevel()
+
+        # If users press cross at top, closes window and re-enables Conversion History button
+        self.conversion_history_box.protocol('WM_DELETE_WINDOW', partial(self.close_Conversion_History, partner))
+
+
+
+    def close_Conversion_History(self, partner):
+        #  Restore Conversion History button in centimetres and inches converter
+        partner.conversion_history_button.config(state=NORMAL)
+        self.help_box.destroy()
+
+    
+
 
 
 # main routine
