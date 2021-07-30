@@ -47,7 +47,7 @@ class Centimetres_and_Inches_Converter:
                                  font="arial 18 bold", bg=background, padx=10, pady=10)
         self.cm_and_in_heading.grid(row=0)
 
-        # Help Button
+        # Help Button (row 1)
         self.help_button = Button(self.cm_and_in_frame, text="Help", font=("Arial", "14"), command=self.Help, padx=10, pady=10)
         self.help_button.grid(row=1)
 
