@@ -64,7 +64,8 @@ class Conversion_History:
 
         # Formatting variables
         ch_background = "#f060f7"
-        history_list = ["8 cm is 3.15 in", "17.7 cm is 6.97 in", "2 in is 5.08 cm", "18.2 in is 46.23 cm", "80 cm is 31.50 in"] 
+        conversion_history_list = ["8 cm is 3.15 in", "17.7 cm is 6.97 in", "2 in is 5.08 cm", "18.2 in is 46.23 cm", "80 cm is 31.50 in"]
+        conversion_history_string = "" 
 
         # Disable Conversion History button while window is open
         partner.conversion_history_button.config(state=DISABLED)
@@ -91,8 +92,11 @@ class Conversion_History:
                                                                                  padx=10, pady=10)
         self.conversion_history_instructions_text.grid(row=1)
 
+        # Convert conversion history list to conversion history string
+
         # Placeholder conversion history (row 2)
-        self.conversion_history_items_label = Label(self.conversion_history_frame, text=history_list, font="Arial 12")
+        self.conversion_history_items_label = Label(self.conversion_history_frame, text=conversion_history_list,
+                                                    font="Arial 12", bg=ch_background)
         self.conversion_history_items_label.grid(row=2)
 
 
