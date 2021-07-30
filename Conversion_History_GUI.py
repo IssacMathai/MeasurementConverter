@@ -63,7 +63,7 @@ class Conversion_History:
     def __init__(self, partner):
 
         # Formatting variables
-        ch_background = "purple"
+        ch_background = "#f060f7"
 
         # Disable Conversion History button while window is open
         partner.conversion_history_button.config(state=DISABLED)
@@ -81,6 +81,14 @@ class Conversion_History:
         # Heading (row 0)
         self.conversion_history_heading = Label(self.conversion_history_frame, text="Conversion History", font="arial 18 bold", bg=ch_background)
         self.conversion_history_heading.grid(row=0)
+
+        # Instructions text (row 1)
+        self.conversion_history_text = Label(self.conversion_history_frame, text="Your conversion history will appear below. "
+                                                                                 "In order to export this data onto a text file, "
+                                                                                 "push the export button.", font="Arial 10 italic",
+                                                                                 justify=CENTER, bg=ch_background, wrap=350,
+                                                                                 padx=10, pady=10)
+        self.conversion_history_text.grid(row=1)
 
 
 
