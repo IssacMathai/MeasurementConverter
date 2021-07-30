@@ -74,12 +74,20 @@ class Conversion_History:
         # If users press cross at top, closes window and re-enables Conversion History button
         self.conversion_history_box.protocol('WM_DELETE_WINDOW', partial(self.close_Conversion_History, partner))
 
+        # GUI Frame
+        self.conversion_history_frame = Frame(self.conversion_history_box, width=300, bg=ch_background)
+        self.conversion_history_frame.grid()
+
+        # Heading (row 0)
+        self.conversion_history_heading = Label(self.conversion_history_frame, text="Conversion History", font="arial 18 bold", bg=ch_background)
+        self.conversion_history_heading.grid(row=0)
+
 
 
     def close_Conversion_History(self, partner):
         #  Restore Conversion History button in centimetres and inches converter
         partner.conversion_history_button.config(state=NORMAL)
-        self.help_box.destroy()
+        self.conversion_history_box.destroy()
 
     
 
