@@ -93,9 +93,13 @@ class Conversion_History:
         self.conversion_history_instructions_text.grid(row=1)
 
         # Convert conversion history list to conversion history string
+        while len(conversion_history_list) !=0:
+            for value in conversion_history_list:
+                conversion_history_string += conversion_history_list[len(conversion_history_list) - conversion_history_list.index(value) - 1] + "\n"
+
 
         # Placeholder conversion history (row 2)
-        self.conversion_history_items_label = Label(self.conversion_history_frame, text=conversion_history_list,
+        self.conversion_history_items_label = Label(self.conversion_history_frame, text=conversion_history_string,
                                                     font="Arial 12", bg=ch_background)
         self.conversion_history_items_label.grid(row=2)
 
