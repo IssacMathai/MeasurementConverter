@@ -64,6 +64,7 @@ class Conversion_History:
 
         # Formatting variables
         ch_background = "#f060f7"
+        history_list = ["8 cm is 3.15 in", "17.7 cm is 6.97 in", "2 in is 5.08 cm", "18.2 in is 46.23 cm", "80 cm is 31.50 in"] 
 
         # Disable Conversion History button while window is open
         partner.conversion_history_button.config(state=DISABLED)
@@ -83,12 +84,16 @@ class Conversion_History:
         self.conversion_history_heading.grid(row=0)
 
         # Instructions text (row 1)
-        self.conversion_history_text = Label(self.conversion_history_frame, text="Your conversion history will appear below. "
+        self.conversion_history_instructions_text = Label(self.conversion_history_frame, text="Your conversion history will appear below. "
                                                                                  "In order to export this data onto a text file, "
                                                                                  "push the export button.", font="Arial 10 italic",
                                                                                  justify=CENTER, bg=ch_background, wrap=350,
                                                                                  padx=10, pady=10)
-        self.conversion_history_text.grid(row=1)
+        self.conversion_history_instructions_text.grid(row=1)
+
+        # Placeholder conversion history (row 2)
+        self.conversion_history_items_label = Label(self.conversion_history_frame, text=history_list, font="Arial 12")
+        self.conversion_history_items_label.grid(row=2)
 
 
 
