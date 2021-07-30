@@ -93,9 +93,14 @@ class Conversion_History:
         self.conversion_history_instructions_text.grid(row=1)
 
         # Convert conversion history list to conversion history string
-        while len(conversion_history_list) !=0:
-            for value in conversion_history_list:
-                conversion_history_string += conversion_history_list[len(conversion_history_list) - conversion_history_list.index(value) - 1] + "\n"
+        if len(conversion_history_list) > 5:
+            for item in range(0, 5):
+                conversion_history_string += conversion_history_list[len(conversion_history_list) - item - 1]+ "\n"
+
+        else:
+            for item in conversion_history_list:
+                conversion_history_string += conversion_history_list[len(conversion_history_list) -
+                                               conversion_history_list.index(item) - 1] + "\n"
 
 
         # Placeholder conversion history (row 2)
