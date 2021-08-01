@@ -28,7 +28,7 @@ class Centimetres_and_Inches_Converter:
 
         # Formatting variables
         background = "lime green"
-        conversion_history_list = []
+        conversion_history_list = ["8 cm is 3.15 in", "17.7 cm is 6.97 in", "2 in is 5.08 cm", "18.2 in is 46.23 cm", "80 cm is 31.50 in"]
 
         # Disable Centimetres and Inches button while window is open
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
@@ -49,7 +49,7 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_heading.grid(row=0)
 
         # Conversion History Button
-        self.conversion_history_button = Button(self.cm_and_in_frame, text="Conversion History", font=("Arial", "14"), command=self.Conversion_History, padx=10, pady=10)
+        self.conversion_history_button = Button(self.cm_and_in_frame, text="Conversion History", font=("Arial", "14"), command=lambda: self.Conversion_History(conversion_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=1)
 
         # If list is empty, print message
@@ -61,11 +61,11 @@ class Centimetres_and_Inches_Converter:
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
 
-    def Conversion_History(self):
-        get_Conversion_History = Conversion_History(self)
+    def Conversion_History(self, conversion_history_list):
+        get_Conversion_History = Conversion_History(self, conversion_history_list)
 
 class Conversion_History:
-    def __init__(self, partner):
+    def __init__(self, partner, conversion_history_list):
 
         # Formatting variables
         ch_background = "#f060f7"
