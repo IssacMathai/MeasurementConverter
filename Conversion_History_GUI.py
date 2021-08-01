@@ -70,6 +70,7 @@ class Conversion_History:
         # Formatting variables
         ch_background = "#f060f7"
         export_button_background = "grey"
+        ch_dismiss_button_background = "grey"
         conversion_history_string = "" 
 
         # Disable Conversion History button while window is open
@@ -124,16 +125,13 @@ class Conversion_History:
         self.export_button.grid(row=3)
 
         # Dismiss button (row 3)
-
-
-
+        self.dismiss_button = Button(self.export_dismiss_buttons_frame, text="Dismiss", font="Arial 12", bg=ch_dismiss_button_background, command=partial(self.close_Conversion_History, partner))
+        self.dismiss_button.grid(row=3, column=1)
 
     def close_Conversion_History(self, partner):
         #  Restore Conversion History button in centimetres and inches converter
         partner.conversion_history_button.config(state=NORMAL)
         self.conversion_history_box.destroy()
-
-    
 
 
 
