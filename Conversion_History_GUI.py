@@ -92,21 +92,29 @@ class Conversion_History:
                                                                                  padx=10, pady=10)
         self.conversion_history_instructions_text.grid(row=1)
 
-        # Convert conversion history list to conversion history string
-        if len(conversion_history_list) > 5:
-            for item in range(0, 5):
-                conversion_history_string += conversion_history_list[len(conversion_history_list) - item - 1]+ "\n"
+        # If list is empty, print message
+        if len(conversion_history_list) == 0:
+            print("There are no conversion_history_list to display")
 
+        # Print most recent 5 values
+        elif len(conversion_history_list) >=5:
+            print("Most recent 5 values:")
+            for value in range(0,5):
+                # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop 
+                print(conversion_history_list[len(conversion_history_list) - value - 1])
+
+        # There are less than 5 values on the list so print what's on the list in order of most recent to least recent
         else:
-            for item in conversion_history_list:
-                conversion_history_string += conversion_history_list[len(conversion_history_list) -
-                                               conversion_history_list.index(item) - 1] + "\n"
+            print("Most recent values:")
+            for value in conversion_history_list:
+                # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop
+                print(conversion_history_list[len(conversion_history_list) - conversion_history_list.index(value) - 1])
 
 
         # Placeholder conversion history (row 2)
-        self.conversion_history_items_label = Label(self.conversion_history_frame, text=conversion_history_string,
+        self.conversion_history_values_label = Label(self.conversion_history_frame, text=conversion_history_string,
                                                     font="Arial 12", bg=ch_background)
-        self.conversion_history_items_label.grid(row=2)
+        self.conversion_history_values_label.grid(row=2)
 
 
 
