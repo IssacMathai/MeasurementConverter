@@ -28,6 +28,7 @@ class Centimetres_and_Inches_Converter:
 
         # Formatting variables
         background = "lime green"
+        conversion_history_list = []
 
         # Disable Centimetres and Inches button while window is open
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
@@ -51,6 +52,10 @@ class Centimetres_and_Inches_Converter:
         self.conversion_history_button = Button(self.cm_and_in_frame, text="Conversion History", font=("Arial", "14"), command=self.Conversion_History, padx=10, pady=10)
         self.conversion_history_button.grid(row=1)
 
+        # If list is empty, print message
+        if len(conversion_history_list) == 0:
+            self.conversion_history_button.config(state=DISABLED)
+
     def close_Centimetres_and_Inches_Converter(self, partner):
         # Put "Centimetres and Inches" button in welcome screen back to normal... 
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
@@ -64,7 +69,6 @@ class Conversion_History:
 
         # Formatting variables
         ch_background = "#f060f7"
-        conversion_history_list = ["8 cm is 3.15 in", "17.7 cm is 6.97 in", "2 in is 5.08 cm", "18.2 in is 46.23 cm", "80 cm is 31.50 in"]
         conversion_history_string = "" 
 
         # Disable Conversion History button while window is open
@@ -92,12 +96,8 @@ class Conversion_History:
                                                                                  padx=10, pady=10)
         self.conversion_history_instructions_text.grid(row=1)
 
-        # If list is empty, print message
-        if len(conversion_history_list) == 0:
-
-
         # Print most recent 5 values
-        elif len(conversion_history_list) >=5:
+        if len(conversion_history_list) >=5:
             for value in range(0,5):
                 # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop 
                 conversion_history_string += conversion_history_list[len(conversion_history_list) - value - 1]+ "\n"
