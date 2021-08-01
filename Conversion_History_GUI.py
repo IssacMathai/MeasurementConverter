@@ -69,6 +69,7 @@ class Conversion_History:
 
         # Formatting variables
         ch_background = "#f060f7"
+        export_button_background = "grey"
         conversion_history_string = "" 
 
         # Disable Conversion History button while window is open
@@ -113,6 +114,17 @@ class Conversion_History:
         self.conversion_history_values_label = Label(self.conversion_history_frame, text=conversion_history_string,
                                                     font="Arial 12", bg=ch_background)
         self.conversion_history_values_label.grid(row=2)
+
+        # Export and Dismiss buttons frames
+        self.export_dismiss_buttons_frame = Frame(self.conversion_history_frame)
+        self.export_dismiss_buttons_frame.grid(row=3)
+
+        # Export button (row 3)
+        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12", bg=export_button_background)
+        self.export_button.grid(row=3)
+
+        # Dismiss button (row 3)
+
 
 
 
