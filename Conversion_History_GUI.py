@@ -94,21 +94,19 @@ class Conversion_History:
 
         # If list is empty, print message
         if len(conversion_history_list) == 0:
-            print("There are no conversion_history_list to display")
+
 
         # Print most recent 5 values
         elif len(conversion_history_list) >=5:
-            print("Most recent 5 values:")
             for value in range(0,5):
                 # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop 
-                print(conversion_history_list[len(conversion_history_list) - value - 1])
+                conversion_history_string += conversion_history_list[len(conversion_history_list) - value - 1]+ "\n"
 
         # There are less than 5 values on the list so print what's on the list in order of most recent to least recent
         else:
-            print("Most recent values:")
             for value in conversion_history_list:
                 # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop
-                print(conversion_history_list[len(conversion_history_list) - conversion_history_list.index(value) - 1])
+                conversion_history_string += conversion_history_list[len(conversion_history_list) - conversion_history_list.index(value) - 1] + "\n"
 
 
         # Placeholder conversion history (row 2)
