@@ -217,6 +217,23 @@ class Export:
             # Change input box background to pink
             self.filename_input_box.config(bg="pink")
 
+        else:
+            # Add .txt suffix
+            filename = filename + ".txt"
+
+            # Generate text file to contain conversion history
+            file = open(filename, "w+")
+
+            # Write conversions
+            for value in conversion_history_list:
+                file.write(value)
+
+            # Close file
+            file.close()
+
+
+            
+
 
 
     def close_export(self, partner):
