@@ -121,7 +121,7 @@ class Conversion_History:
         self.export_dismiss_buttons_frame.grid(row=3)
 
         # Export button (row 3)
-        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12", command=self.Export, bg=export_button_background)
+        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12", command=lambda: self.Export(conversion_history_list), bg=export_button_background)
         self.export_button.grid(row=3)
 
         # Dismiss button (row 3)
@@ -137,7 +137,7 @@ class Conversion_History:
         get_export = Export(self)
 
 class Export:
-    def __init__(self, partner):
+    def __init__(self, partner, conversion_history_list):
 
         # Formatting variables
         export_background = "#f060f7"
@@ -182,7 +182,7 @@ class Export:
         self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 13 bold", command=partial(self.close_export,partner))
         self.cancel_button.grid(row=3, column=2)
 
-    def save_conversion_history(self, partner):
+    def save_conversion_history(self, partner, conversion_history_list):
         # Variables that set valid characters and if an error has been made 
         valid_characters = "[A-Za-z0-9_]"
         has_error = "no"
