@@ -194,6 +194,7 @@ class Export:
             issue = "filename cannot be blank"
             has_error = "yes"
 
+        # Checks filename for spaces or unsuitable symbols
         for character in filename:
             if re.match(valid_characters, character):
                 continue
@@ -205,6 +206,13 @@ class Export:
                 issue = ("no {}'s allowed".format(character))
             has_error = "yes"
             break
+
+        if has_error == "yes":
+            # Print error message that states which character is unsuitable
+            self.save_error_label.config(text="Invalid filename - {}".format(issue))
+            # Change input box background to pink
+            self.filename_input_box.config(bg="blue")
+            print()
 
 
 
