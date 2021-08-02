@@ -129,10 +129,16 @@ class Export:
         self.filename_input_box.grid(row=2, pady=10)
 
         # Save and cancel buttons frame
+        self.save_cancel_buttons_frame = Frame(self.export_frame)
+        self.save_cancel_buttons_frame.grid(row=3, pady=10)
 
         # Save button (row 3)
+        self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 10 bold")
+        self.save_button.grid(row=3)
 
         # Cancel button (row 3)
+        self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 10 bold")
+        self.cancel_button.grid(row=3, column=2)
 
         
     def close_export(self, partner):
