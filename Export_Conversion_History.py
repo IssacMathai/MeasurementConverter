@@ -170,17 +170,21 @@ class Export:
         self.filename_input_box = Entry(self.export_frame, width=31, font="arial 12 bold")
         self.filename_input_box.grid(row=2, pady=10)
 
+        # Error messages (row 3)
+        self.save_error_label = Label(self.export_frame, text="", fg="red", bg=export_background)
+        self.save_error_label.grid(row=3)
+
         # Save and cancel buttons frame
         self.save_cancel_buttons_frame = Frame(self.export_frame)
-        self.save_cancel_buttons_frame.grid(row=3, pady=10)
+        self.save_cancel_buttons_frame.grid(row=4, pady=10)
 
-        # Save button (row 3)
+        # Save button (row 4)
         self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 13 bold", command=partial(lambda: self.save_conversion_history(partner, conversion_history_list)))
-        self.save_button.grid(row=3)
+        self.save_button.grid(row=4)
 
-        # Cancel button (row 3)
+        # Cancel button (row 4)
         self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 13 bold", command=partial(self.close_export,partner))
-        self.cancel_button.grid(row=3, column=2)
+        self.cancel_button.grid(row=4, column=2)
 
     def save_conversion_history(self, partner, conversion_history_list):
         # Variables that set valid characters and if an error has been made 
@@ -209,10 +213,9 @@ class Export:
 
         if has_error == "yes":
             # Print error message that states which character is unsuitable
-            self.save_error_label.config(text="Invalid filename - {}".format(issue))
+            self.save_error_label.config(text="Unsuitable filename - {}".format(issue))
             # Change input box background to pink
-            self.filename_input_box.config(bg="blue")
-            print()
+            self.filename_input_box.config(bg="pink")
 
 
 
