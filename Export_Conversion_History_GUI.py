@@ -122,7 +122,7 @@ class Export:
                                                                    "it will be replaced with your conversion history", justify=CENTER,
                                                                    bg="pink",fg="maroon", font = "Arial 10 italic", wrap=300,
                                                                    padx=10, pady=10)
-        self.export_warning_text.grid(row=1, pady=10)
+        self.export_warning_text.grid(row=1, padx=10, pady=10)
 
         # Input box (row 2)
         self.filename_input_box = Entry(self.export_frame, width=31, font="arial 12 bold")
