@@ -125,7 +125,7 @@ class Export:
         self.export_warning_text.grid(row=1, pady=10)
 
         # Input box (row 2)
-        self.filename_input_box = Entry(self.export_frame, width=20, font="arial 12 bold")
+        self.filename_input_box = Entry(self.export_frame, width=31, font="arial 12 bold")
         self.filename_input_box.grid(row=2, pady=10)
 
         # Save and cancel buttons frame
@@ -133,11 +133,11 @@ class Export:
         self.save_cancel_buttons_frame.grid(row=3, pady=10)
 
         # Save button (row 3)
-        self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 10 bold")
+        self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 13 bold")
         self.save_button.grid(row=3)
 
         # Cancel button (row 3)
-        self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 10 bold")
+        self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 13 bold", command=partial(self.close_export,partner))
         self.cancel_button.grid(row=3, column=2)
 
         
