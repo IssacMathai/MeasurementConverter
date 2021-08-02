@@ -113,6 +113,20 @@ class Export:
         self.export_frame = Frame(self.export_box, bg=export_background)
         self.export_frame.grid()
 
+        # Heading (row 0)
+        self.export_heading = Label(self.export_frame, text="Export Conversion History", font="Arial 18 bold", bg=export_background)
+        self.export_heading.grid(row=0)
+
+        # Warning text (row 1)
+
+        # Entry box (row 2)
+
+        # Save and cancel buttons frame
+
+        # Save button (row 3)
+
+        # Cancel button (row 3)
+
         
     def close_export(self, partner):
         # Re-enable export button in Conversion History 
