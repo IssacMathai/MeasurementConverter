@@ -68,14 +68,14 @@ class Conversion_History:
         # Disable Centimetres and Inches button while window is open
         partner.conversion_history_button.config(state=DISABLED)
 
-        # Sets up child window (ie: history box)
+        # Conversion History child window
         self.conversion_history_box = Toplevel()
 
         # If users press cross at top, closes history and 'releases' history button
         self.conversion_history_box.protocol('WM_DELETE_WINDOW', partial(self.close_Conversion_History, partner))
 
         # GUI Frame
-        self.conversion_history_frame = Frame(self.conversion_history_box, width=300, bg=ch_background)
+        self.conversion_history_frame = Frame(self.conversion_history_box, bg=ch_background)
         self.conversion_history_frame.grid()
 
         # Heading (row 0)
@@ -85,12 +85,38 @@ class Conversion_History:
         # Export button (row 1)
         self.export_button = Button(self.conversion_history_frame, text="Export", font="Arial 14 bold", padx=10, pady=10)
         self.export_button.grid(row=1)
-
     
     def close_Conversion_History(self, partner):
         #  Restore Conversion History button in centimetres and inches converter
         partner.conversion_history_button.config(state=NORMAL)
         self.conversion_history_box.destroy()
+    
+    def Export(self):
+        get_export = Export(self)
+
+class Export:
+    def __init__(self, partner):
+
+        # Formatting variables
+        export_background = "blue"
+
+        # disable export button
+        partner.export_button.config(state=DISABLED)
+
+        # Export child window
+        self.export_box = Toplevel()
+
+        # If users press cross at top, closes export and 'releases' export button
+        self.export_box.protocol('WM_DELETE_WINDOW', partial(self.close_export, partner))
+
+
+
+    def close_export(self, partner):
+        # Put export button back to normal...
+        partner.export_button.config(state=NORMAL)
+        self.export_box.destroy() 
+
+
 
 
 
