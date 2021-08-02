@@ -98,7 +98,7 @@ class Export:
     def __init__(self, partner):
 
         # Formatting variables
-        export_background = "blue"
+        export_background = "#f060f7"
 
         # disable export button
         partner.export_button.config(state=DISABLED)
@@ -120,10 +120,13 @@ class Export:
         # Warning text (row 1)
         self.export_warning_text = Label(self.export_frame, text = "Please note that if the filename you enter below already exists, "
                                                                    "it will be replaced with your conversion history", justify=CENTER,
-                                                                   bg="red",fg="maroon", font = "Arial 12 italic", padx=10, pady=10)
-        self.export_warning_text.grid(row=1)
+                                                                   bg="pink",fg="maroon", font = "Arial 10 italic", wrap=300,
+                                                                   padx=10, pady=10)
+        self.export_warning_text.grid(row=1, pady=10)
 
-        # Entry box (row 2)
+        # Input box (row 2)
+        self.filename_input_box = Entry(self.export_frame, width=20, font="arial 12 bold")
+        self.filename_input_box.grid(row=2, pady=10)
 
         # Save and cancel buttons frame
 
