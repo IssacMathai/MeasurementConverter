@@ -118,6 +118,10 @@ class Export:
         self.export_heading.grid(row=0)
 
         # Warning text (row 1)
+        self.export_warning_text = Label(self.export_frame, text = "Please note that if the filename you enter below already exists, "
+                                                                   "it will be replaced with your conversion history", justify=CENTER,
+                                                                   bg="red",fg="maroon", font = "Arial 12 italic", padx=10, pady=10)
+        self.export_warning_text.grid(row=1)
 
         # Entry box (row 2)
 
