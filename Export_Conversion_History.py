@@ -1,6 +1,6 @@
 from tkinter import *
 from functools import partial 
-import random
+import random, re
 
 class Welcome_Screen:
     def __init__(self, partner):
@@ -133,8 +133,8 @@ class Conversion_History:
         partner.conversion_history_button.config(state=NORMAL)
         self.conversion_history_box.destroy()
 
-    def Export(self):
-        get_export = Export(self)
+    def Export(self, conversion_history_list):
+        get_export = Export(self,conversion_history_list)
 
 class Export:
     def __init__(self, partner, conversion_history_list):
@@ -175,7 +175,7 @@ class Export:
         self.save_cancel_buttons_frame.grid(row=3, pady=10)
 
         # Save button (row 3)
-        self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 13 bold", command=partial(lambda: self.save_conversion_history(partner)))
+        self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 13 bold", command=partial(lambda: self.save_conversion_history(partner, conversion_history_list)))
         self.save_button.grid(row=3)
 
         # Cancel button (row 3)
@@ -189,6 +189,18 @@ class Export:
 
         filename = self.filename_input_box.get()
         print(filename)
+
+        for character in filename:
+            if re.match(valid_characters, character):
+                continue
+
+            elif character == " ":
+                issue = "no spaces allowed"
+
+            else:
+                issue = ("no {}'s allowed".format(character))
+            has_error = "yes"
+            break
 
 
 
