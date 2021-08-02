@@ -226,10 +226,13 @@ class Export:
 
             # Write conversions
             for value in conversion_history_list:
-                file.write(value)
+                file.write(value + "\n")
 
             # Close file
             file.close()
+
+            # Close export window
+            self.close_export(partner)
 
 
             
