@@ -35,7 +35,7 @@ class Centimetres_and_Inches_Converter:
         # Centimetres and Inches Converter child window
         self.cm_and_in_box = Toplevel()
 
-        # If users press cross at top, closes window and re-enables Centimetres and Inches button
+        # Re-enables Centimetres and Inches button if the centimetres and inches converter window is closed using the X button
         self.cm_and_in_box.protocol('WM_DELETE_WINDOW', partial(self.close_Centimetres_and_Inches_Converter, partner))
 
         # GUI Frame
@@ -52,7 +52,7 @@ class Centimetres_and_Inches_Converter:
         self.conversion_history_button.grid(row=1)
 
     def close_Centimetres_and_Inches_Converter(self, partner):
-        # Put "Centimetres and Inches" button in welcome screen back to normal... 
+        # Re-enable Centimetres and Inches button in Welcome Screen
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
 
@@ -71,7 +71,7 @@ class Conversion_History:
         # Conversion History child window
         self.conversion_history_box = Toplevel()
 
-        # If users press cross at top, closes history and 'releases' history button
+        # Re-enables Conversion History button if the conversion history window is closed using the X button
         self.conversion_history_box.protocol('WM_DELETE_WINDOW', partial(self.close_Conversion_History, partner))
 
         # GUI Frame
@@ -83,7 +83,7 @@ class Conversion_History:
         self.conversion_history_heading.grid(row=0)
 
         # Export button (row 1)
-        self.export_button = Button(self.conversion_history_frame, text="Export", font="Arial 14 bold", padx=10, pady=10)
+        self.export_button = Button(self.conversion_history_frame, text="Export", font="Arial 14 bold", command=self.Export, padx=10, pady=10)
         self.export_button.grid(row=1)
     
     def close_Conversion_History(self, partner):
@@ -106,13 +106,16 @@ class Export:
         # Export child window
         self.export_box = Toplevel()
 
-        # If users press cross at top, closes export and 'releases' export button
+        # Re-enables export button if the export window is closed using the X button
         self.export_box.protocol('WM_DELETE_WINDOW', partial(self.close_export, partner))
 
+        # GUI Frame
+        self.export_frame = Frame(self.export_box, bg=export_background)
+        self.export_frame.grid()
 
-
+        
     def close_export(self, partner):
-        # Put export button back to normal...
+        # Re-enable export button in Conversion History 
         partner.export_button.config(state=NORMAL)
         self.export_box.destroy() 
 
