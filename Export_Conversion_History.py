@@ -190,6 +190,10 @@ class Export:
         filename = self.filename_input_box.get()
         print(filename)
 
+        if filename == "":
+            issue = "filename cannot be blank"
+            has_error = "yes"
+
         for character in filename:
             if re.match(valid_characters, character):
                 continue
