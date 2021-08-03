@@ -90,7 +90,7 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_result_subheading_label.grid(row=4)
 
         # Conversion Result (row 5)
-        self.cm_and_in_result_label = Label(self.cm_and_in_frame, font = "Arial 11 bold", bg=background, fg="blue", pady=10, text="placeholder result")
+        self.cm_and_in_result_label = Label(self.cm_and_in_frame, font = "Arial 11 bold", bg=background, fg="blue", pady=10, text="")
         self.cm_and_in_result_label.grid(row=5)
 
         # Conversion History, Help and Dismiss buttons frame (row 6)
@@ -146,7 +146,13 @@ class Centimetres_and_Inches_Converter:
                 answer = "Please enter a positive number"
                 cm_in_errors="yes"
             
-            
+            if cm_in_errors == "no":
+                self.cm_and_in_result_label.configure(text=answer, fg="blue")
+                self.to_convert__cm_in_input.configure(bg="white")
+
+            else:
+                self.cm_and_in_result_label.configure(text=answer, fg="pink")
+                self.to_convert__cm_in_input.configure(bg="pink")
             
         except:
             print()
