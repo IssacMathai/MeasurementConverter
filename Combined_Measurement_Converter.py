@@ -70,19 +70,19 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_instructions_label.grid(row=1)
 
         # Measurement input box (row 2)
-        self.to_convert__cm_in_input = Entry(self.cm_and_in_frame, width=20, font="Arial 20 bold")
-        self.to_convert__cm_in_input.grid(row=2)
+        self.to_convert_cm_in_input = Entry(self.cm_and_in_frame, width=20, font="Arial 20 bold")
+        self.to_convert_cm_in_input.grid(row=2)
 
         # "To Convert" buttons frame
         self.to_cm_and_in_buttons_frame = Frame(self.cm_and_in_frame)
         self.to_cm_and_in_buttons_frame.grid(row=3, pady=10)
 
         # To Centimetres button (row 3)
-        self.to_cm_button = Button(self.to_cm_and_in_buttons_frame, text="To Centimetres", font="Arial 10 bold", bg=to_cm_button_background, padx=10, pady=10)
+        self.to_cm_button = Button(self.to_cm_and_in_buttons_frame, text="To Centimetres", font="Arial 10 bold", bg=to_cm_button_background, command=lambda: self.cm_in_convert(0), padx=10, pady=10)
         self.to_cm_button.grid(row=3, column=0)
 
         # To Inches button (row 3)
-        self.to_in_button = Button(self.to_cm_and_in_buttons_frame, text="To Inches", font="Arial 10 bold", bg=to_in_button_background, padx=10, pady=10)
+        self.to_in_button = Button(self.to_cm_and_in_buttons_frame, text="To Inches", font="Arial 10 bold", bg=to_in_button_background, command=lambda: self.cm_in_convert(0), padx=10, pady=10)
         self.to_in_button.grid(row=3,column=1)
 
         # Conversion Result subheading (row 4)
@@ -126,7 +126,6 @@ class Centimetres_and_Inches_Converter:
             to_convert_cm_in = float(to_convert_cm_in)
             cm_in_errors = "no"
 
-
             # Convert to centimetres if input is greater than 0
             if inapplicable == 0 and to_convert_cm_in > inapplicable:
                 cm = (to_convert_cm_in * 2.54)
@@ -146,16 +145,26 @@ class Centimetres_and_Inches_Converter:
                 answer = "Please enter a positive number"
                 cm_in_errors="yes"
             
+            # Display conversion result
             if cm_in_errors == "no":
                 self.cm_and_in_result_label.configure(text=answer, fg="blue")
-                self.to_convert__cm_in_input.configure(bg="white")
+                self.to_convert_cm_in_input.configure(bg="white")
 
+            # Display error message
             else:
                 self.cm_and_in_result_label.configure(text=answer, fg="pink")
-                self.to_convert__cm_in_input.configure(bg="pink")
+                self.to_convert_cm_in_input.configure(bg="pink")
             
-        except:
-            print()
+            # If there are no errors, add conversion to conversion history list
+            if cm_in_errors !="yes":
+                self.conversion_history_list.append(answer)
+                #self.cm_and_in_history_button(state=NORMAL)
+            
+        # If the user doesn't enter a number, display error message
+        except ValueError:
+            self.cm_and_in_result_label.configure(text="Please enter a positive number", fg="pink")
+            self.to_convert_cm_in_input.configure(bg="pink")
+            
 
 
     
