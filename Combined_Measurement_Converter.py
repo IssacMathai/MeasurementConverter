@@ -105,8 +105,8 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_history_button.grid(row=6,column=0)
 
         # Help button (row 6)
-        self.cm_and_in_help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", padx=10, pady=10)
-        self.cm_and_in_help_button.grid(row=6,column=1)
+        self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
+        self.help_button.grid(row=6,column=1)
 
         # Dismiss button (row 6)
         self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame,
@@ -182,6 +182,9 @@ class Centimetres_and_Inches_Converter:
             else:
                 rounded = round(to_round, 2)
             return rounded
+    
+    def Help(self):
+        get_Help = Help(self)
 
 class Metres_and_Feet_Converter:
     def __init__(self, partner):
@@ -252,8 +255,8 @@ class Metres_and_Feet_Converter:
         self.m_and_ft_history_button.grid(row=6,column=0)
 
         # Help button (row 6)
-        self.m_and_ft_help_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", padx=10, pady=10)
-        self.m_and_ft_help_button.grid(row=6,column=1)
+        self.help_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
+        self.help_button.grid(row=6,column=1)
 
         # Dismiss button (row 6)
         self.m_and_ft_dismiss_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame,
@@ -329,9 +332,53 @@ class Metres_and_Feet_Converter:
             else:
                 rounded = round(to_round, 2)
             return rounded
+    
+    def Help(self):
+        get_Help = Help(self)
 
-        
+class Help:
+    def __init__(self, partner):
 
+        # Formatting variables
+        help_background = "grey"
+
+        # Disable Help button while window is open
+        partner.help_button.config(state=DISABLED)
+         
+        # Help GUI child window
+        self.help_box = Toplevel()
+
+        # If users press cross at top, closes window and re-enables Help button
+        self.help_box.protocol('WM_DELETE_WINDOW', partial(self.close_Help, partner))
+
+        # GUI Frame
+        self.help_frame = Frame(self.help_box, bg=help_background)
+        self.help_frame.grid()
+
+        # Help heading (row 0)
+        self.help_heading = Label(self.help_frame, text="Help", font="arial 18 bold", bg=help_background)
+        self.help_heading.grid(row=0)
+
+        # Help text (row 1)
+        self.help_text = Label(self.help_frame, text="Enter a number into the input box and then click on one of the two buttons underneath "
+                                                     "to convert the measurement. Ensure your number is greater than 0, or an error will be "
+                                                     "returned. Do not enter letters into the input box. "
+                                                     "\n\nE.g. If you wish to convert to centimetres, type in a measurement in inches and click "
+                                                     "the 'To Centimetres' button. ",
+                                 justify=CENTER, width=60, bg=help_background, wrap=400)
+        self.help_text.grid(row=1)
+
+        # Dismiss button (row 2)
+        self.help_button = Button(self.help_frame, text="Dismiss", bg=help_background, font="Arial 10 bold", command=partial(self.close_Help, partner), 
+                                                                                                    padx=10, pady=10)
+        self.help_button.grid(row=2)
+
+
+
+    def close_Help(self, partner):
+        # Restore Help button in measurement converter
+        partner.help_button.config(state=NORMAL)
+        self.help_box.destroy()        
 
 
 
