@@ -78,11 +78,11 @@ class Centimetres_and_Inches_Converter:
         self.to_cm_and_in_buttons_frame.grid(row=3, pady=10)
 
         # To Centimetres button (row 3)
-        self.to_cm_button = Button(self.to_cm_and_in_buttons_frame, text="To Centimetres", font="Arial 10 bold", bg=to_cm_button_background, command=lambda: self.cm_in_convert(0), padx=10, pady=10)
+        self.to_cm_button = Button(self.to_cm_and_in_buttons_frame, text="To Centimetres", font="Arial 10 bold", bg=to_cm_button_background, command=lambda: self.cm_in_convert(cm_inapplicable=0, inch_inapplicable=0), padx=10, pady=10)
         self.to_cm_button.grid(row=3, column=0)
 
         # To Inches button (row 3)
-        self.to_in_button = Button(self.to_cm_and_in_buttons_frame, text="To Inches", font="Arial 10 bold", bg=to_in_button_background, command=lambda: self.cm_in_convert(0), padx=10, pady=10)
+        self.to_in_button = Button(self.to_cm_and_in_buttons_frame, text="To Inches", font="Arial 10 bold", bg=to_in_button_background, command=lambda: self.cm_in_convert(cm_inapplicable=0, inch_inapplicable=0.0000000000000001), padx=10, pady=10)
         self.to_in_button.grid(row=3,column=1)
 
         # Conversion Result subheading (row 4)
@@ -118,7 +118,7 @@ class Centimetres_and_Inches_Converter:
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
     
-    def cm_in_convert(self, inapplicable):
+    def cm_in_convert(self, inch_inapplicable, cm_inapplicable):
         
         # Format variables
         error_message_background = "red"
@@ -131,15 +131,15 @@ class Centimetres_and_Inches_Converter:
             to_convert_cm_in = float(to_convert_cm_in)
             cm_in_errors = "no"
 
-            # Convert to centimetres if input is greater than 0
-            if inapplicable == 0 and to_convert_cm_in > inapplicable:
+            # Convert to centimetres if input is 0 or greater
+            if inch_inapplicable == 0 and to_convert_cm_in >= inch_inapplicable:
                 cm = (to_convert_cm_in * 2.54)
                 to_convert_cm_in = self.rounding(to_convert_cm_in)
                 cm = self.rounding(cm)
                 answer = "{} in is {} cm".format(to_convert_cm_in, cm)
 
-            # Convert to inches if input is greater than 0
-            elif inapplicable == 0 and to_convert_cm_in > inapplicable:
+            # Convert to inches if input is 0 or greater
+            elif cm_inapplicable == 0 and to_convert_cm_in >= cm_inapplicable:
                 inches = (to_convert_cm_in / 2.54)
                 to_convert_cm_in = self.rounding(to_convert_cm_in)
                 inches = self.rounding(inches)
