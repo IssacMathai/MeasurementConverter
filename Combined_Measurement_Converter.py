@@ -286,14 +286,14 @@ class Metres_and_Feet_Converter:
                 m = (to_convert_m_ft / 3.281)
                 to_convert_m_ft = self.rounding(to_convert_m_ft)
                 m = self.rounding(m)
-                answer = "{} ft is {} cm".format(to_convert_m_ft, m)
+                answer = "{} ft is {} m".format(to_convert_m_ft, m)
 
             # Convert to ft if input is 0 or greater
             elif m_inapplicable == 0 and to_convert_m_ft >= m_inapplicable:
                 ft = (to_convert_m_ft * 3.281)
                 to_convert_m_ft = self.rounding(to_convert_m_ft)
                 ft = self.rounding(ft)
-                answer = "{} cm is {} ft".format(to_convert_m_ft, ft)
+                answer = "{} m is {} ft".format(to_convert_m_ft, ft)
 
             else:
                 # Input is unsuitable due to being negative or 0
