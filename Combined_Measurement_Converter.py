@@ -119,7 +119,12 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_box.destroy()
     
     def cm_in_convert(self, inapplicable):
+        
+        # Format variables
+        error_message_background = "red"
+        input_box_error_background = "pink"
 
+        # Get user input from input box
         to_convert_cm_in = self.to_convert_cm_in_input.get()
 
         try:
@@ -135,14 +140,14 @@ class Centimetres_and_Inches_Converter:
 
             # Convert to inches if input is greater than 0
             elif inapplicable == 0 and to_convert_cm_in > inapplicable:
-                inches = (to_convert_cm_in * 2.54)
+                inches = (to_convert_cm_in / 2.54)
                 to_convert_cm_in = self.rounding(to_convert_cm_in)
                 inches = self.rounding(inches)
                 answer = "{} cm is {} in".format(to_convert_cm_in, inches)
 
             else:
                 # Input is unsuitable due to being negative or 0
-                answer = "Please enter a positive number"
+                answer = "Please enter a number greater than 0"
                 cm_in_errors="yes"
             
             # Display conversion result
@@ -152,8 +157,8 @@ class Centimetres_and_Inches_Converter:
 
             # Display error message
             else:
-                self.cm_and_in_result_label.configure(text=answer, fg="pink")
-                self.to_convert_cm_in_input.configure(bg="pink")
+                self.cm_and_in_result_label.configure(text=answer, fg=error_message_background)
+                self.to_convert_cm_in_input.configure(bg=input_box_error_background)
             
             # If there are no errors, add conversion to conversion history list
             if cm_in_errors !="yes":
@@ -162,8 +167,8 @@ class Centimetres_and_Inches_Converter:
             
         # If the user doesn't enter a number, display error message
         except ValueError:
-            self.cm_and_in_result_label.configure(text="Please enter a positive number", fg="pink")
-            self.to_convert_cm_in_input.configure(bg="pink")
+            self.cm_and_in_result_label.configure(text="Please enter a positive number", fg=error_message_background)
+            self.to_convert_cm_in_input.configure(bg=input_box_error_background)
             
 
 
