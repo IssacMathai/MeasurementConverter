@@ -121,7 +121,22 @@ class Centimetres_and_Inches_Converter:
     def cm_in_convert(self):
 
         to_convert_cm_in = self.to_convert_cm_in_input.get()
-        print(to_convert_cm_in)
+
+
+
+    
+    def rounding(self, to_round):
+
+        # If there is no remainder, print to 0dp
+            if to_round %1 == 0:
+                rounded = int(to_round)
+        # Else, print to 2dp
+            else:
+                rounded = round(to_round, 2)
+            return rounded
+
+
+        
 
 
 
