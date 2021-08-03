@@ -41,6 +41,9 @@ class Centimetres_and_Inches_Converter:
         to_cm_button_background = "yellow"
         to_in_button_background = "tomato"
 
+        # Create conversion history list
+        self.conversion_history_list = []
+
         # disable Centimetres and Inches button when window is opened
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
 
@@ -67,8 +70,8 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_instructions_label.grid(row=1)
 
         # Measurement input box (row 2)
-        self.to_convert_input = Entry(self.cm_and_in_frame, width=20, font="Arial 20 bold")
-        self.to_convert_input.grid(row=2)
+        self.to_convert__cm_in_input = Entry(self.cm_and_in_frame, width=20, font="Arial 20 bold")
+        self.to_convert__cm_in_input.grid(row=2)
 
         # "To Convert" buttons frame
         self.to_cm_and_in_buttons_frame = Frame(self.cm_and_in_frame)
@@ -114,6 +117,13 @@ class Centimetres_and_Inches_Converter:
         # Put "Centimetres and Inches" button in welcome screen back to normal... 
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
+    
+    def cm_in_convert(self):
+
+        to_convert_cm_in = self.to_convert_cm_in_input.get()
+        print(to_convert_cm_in)
+
+
 
 
 # main routine
