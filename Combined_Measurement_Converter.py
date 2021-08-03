@@ -118,7 +118,7 @@ class Centimetres_and_Inches_Converter:
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
     
-    def cm_in_convert(self):
+    def cm_in_convert(self, inapplicable):
 
         to_convert_cm_in = self.to_convert_cm_in_input.get()
 
@@ -140,6 +140,16 @@ class Centimetres_and_Inches_Converter:
                 to_convert_cm_in = self.rounding(to_convert_cm_in)
                 inches = self.rounding(inches)
                 answer = "{} cm is {} in".format(to_convert_cm_in, inches)
+
+            else:
+                # Input is unsuitable due to being negative or 0
+                answer = "Please enter a positive number"
+                cm_in_errors="yes"
+            
+            
+            
+        except:
+            print()
 
 
     
