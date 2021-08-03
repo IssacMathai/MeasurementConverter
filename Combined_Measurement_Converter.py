@@ -122,6 +122,24 @@ class Centimetres_and_Inches_Converter:
 
         to_convert_cm_in = self.to_convert_cm_in_input.get()
 
+        try:
+            to_convert_cm_in = float(to_convert_cm_in)
+            cm_in_errors = "no"
+
+
+            # Convert to centimetres if input is greater than 0
+            if inapplicable == 0 and to_convert_cm_in > inapplicable:
+                cm = (to_convert_cm_in * 2.54)
+                to_convert_cm_in = self.rounding(to_convert_cm_in)
+                cm = self.rounding(cm)
+                answer = "{} in is {} cm".format(to_convert_cm_in, cm)
+
+            # Convert to inches if input is greater than 0
+            elif inapplicable == 0 and to_convert_cm_in > inapplicable:
+                inches = (to_convert_cm_in * 2.54)
+                to_convert_cm_in = self.rounding(to_convert_cm_in)
+                inches = self.rounding(inches)
+                answer = "{} cm is {} in".format(to_convert_cm_in, inches)
 
 
     
