@@ -449,7 +449,7 @@ class Conversion_History:
         self.export_dismiss_buttons_frame.grid(row=3)
 
         # Export button (row 3)
-        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12", bg=export_button_background)
+        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12", command=lambda: self.Export(conv_history), bg=export_button_background)
         self.export_button.grid(row=3)
 
         # Dismiss button (row 3)
@@ -461,8 +461,116 @@ class Conversion_History:
         partner.conversion_history_button.config(state=NORMAL)
         self.conversion_history_box.destroy()
 
-    #def Export(self, conv_history):
-        #get_export = Export(self,conv_history)
+    def Export(self, conv_history):
+        get_export = Export(self,conv_history)
+
+class Export:
+    def __init__(self, partner, conv_history):
+
+        # Formatting variables
+        export_background = "#f060f7"
+
+        # disable export button
+        partner.export_button.config(state=DISABLED)
+
+        # Export child window
+        self.export_box = Toplevel()
+
+        # Re-enables export button if the export window is closed using the X button
+        self.export_box.protocol('WM_DELETE_WINDOW', partial(self.close_export, partner))
+
+        # GUI Frame
+        self.export_frame = Frame(self.export_box, bg=export_background)
+        self.export_frame.grid()
+
+        # Heading (row 0)
+        self.export_heading = Label(self.export_frame, text="Export Conversion History", font="Arial 18 bold", bg=export_background)
+        self.export_heading.grid(row=0)
+
+        # Warning text (row 1)
+        self.export_warning_text = Label(self.export_frame, text = "Please note that if the filename you enter below already exists, "
+                                                                   "it will be replaced with your conversion history", justify=CENTER,
+                                                                   bg="pink",fg="maroon", font = "Arial 10 italic", wrap=300,
+                                                                   padx=10, pady=10)
+        self.export_warning_text.grid(row=1, padx=10, pady=10)
+
+        # Input box (row 2)
+        self.filename_input_box = Entry(self.export_frame, width=31, font="arial 12 bold")
+        self.filename_input_box.grid(row=2, pady=10)
+
+        # Error messages (row 3)
+        self.save_error_label = Label(self.export_frame, text="", fg="red", bg=export_background)
+        self.save_error_label.grid(row=3)
+
+        # Save and cancel buttons frame
+        self.save_cancel_buttons_frame = Frame(self.export_frame)
+        self.save_cancel_buttons_frame.grid(row=4, pady=10)
+
+        # Save button (row 4)
+        self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 13 bold", command=partial(lambda: self.save_conversion_history(partner, conv_history)))
+        self.save_button.grid(row=4)
+
+        # Cancel button (row 4)
+        self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 13 bold", command=partial(self.close_export,partner))
+        self.cancel_button.grid(row=4, column=2)
+
+    def save_conversion_history(self, partner, conv_history):
+        # Variables that set valid characters and if an error has been made 
+        valid_characters = "[A-Za-z0-9_]"
+        has_error = "no"
+
+        filename = self.filename_input_box.get()
+        print(filename)
+
+        if filename == "":
+            issue = "filename cannot be blank"
+            has_error = "yes"
+
+        # Checks filename for spaces or unsuitable symbols
+        for character in filename:
+            if re.match(valid_characters, character):
+                continue
+
+            elif character == " ":
+                issue = "no spaces allowed"
+
+            else:
+                issue = ("no {}'s allowed".format(character))
+            has_error = "yes"
+            break
+
+        if has_error == "yes":
+            # Print error message that states which character is unsuitable
+            self.save_error_label.config(text="Unsuitable filename - {}".format(issue))
+            # Change input box background to pink
+            self.filename_input_box.config(bg="pink")
+
+        else:
+            # Add .txt suffix
+            filename = filename + ".txt"
+
+            # Generate text file to contain conversion history
+            file = open(filename, "w+")
+
+            # Write conversions
+            for value in conv_history:
+                file.write(value + "\n")
+
+            # Close file
+            file.close()
+
+            # Close export window
+            self.close_export(partner)
+
+
+            
+
+
+
+    def close_export(self, partner):
+        # Re-enable export button in Conversion History 
+        partner.export_button.config(state=NORMAL)
+        self.export_box.destroy() 
 
 
 # main routine
