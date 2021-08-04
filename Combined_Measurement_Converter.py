@@ -45,7 +45,7 @@ class Centimetres_and_Inches_Converter:
         to_in_button_background = "tomato"
 
         # Create conversion history list
-        conversion_history_list = []
+        self.conv_history_list = []
 
         # disable Centimetres and Inches button when window is opened
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
@@ -101,15 +101,15 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(conversion_history_list), padx=10, pady=10)
+        self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(self.conv_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=6,column=0)
 
         # If list is empty, disable history button
-        #if len(conversion_history_list) == 0:
-            #self.conversion_history_button.config(state=DISABLED)
+        if len(self.conv_history_list) == 0:
+            self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
-        self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
+        self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command = self.Help, padx=10, pady=10)
         self.help_button.grid(row=6,column=1)
 
         # Dismiss button (row 6)
@@ -169,8 +169,8 @@ class Centimetres_and_Inches_Converter:
             
             # If there are no errors, add conversion to conversion history list
             if cm_in_errors !="yes":
-                conversion_history_list.append(answer)
-                self.conversion_history_button(state=NORMAL)
+                self.conv_history_list.append(answer)
+                self.conversion_history_button.config(state=NORMAL)
             
         # If the user doesn't enter a number, display error message
         except ValueError:
@@ -187,11 +187,12 @@ class Centimetres_and_Inches_Converter:
                 rounded = round(to_round, 2)
             return rounded
     
-    def Help(self):
-        get_Help = Help(self)
     
-    def Conversion_History(self, conversion_history_list):
-        get_Conversion_History = Conversion_History(self, conversion_history_list)
+    def Conversion_History(self, conv_history):
+        get_Conversion_History = Conversion_History(self, conv_history)
+
+    def Help(self):
+        get_help = Help(self)
 
 '''class Metres_and_Feet_Converter:
     def __init__(self, partner):
@@ -395,7 +396,7 @@ class Help:
         self.help_box.destroy()        
 
 class Conversion_History:
-    def __init__(self, partner, conversion_history_list):
+    def __init__(self, partner, conv_history):
 
         # Formatting variables
         ch_background = "#f060f7"
@@ -429,16 +430,16 @@ class Conversion_History:
         self.conversion_history_instructions_text.grid(row=1)
 
         # Print most recent 5 values
-        if len(conversion_history_list) >=5:
+        if len(conv_history) >=5:
             for value in range(0,5):
                 # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop 
-                conversion_history_string += conversion_history_list[len(conversion_history_list) - value - 1]+ "\n"
+                conversion_history_string += conv_history[len(conv_history) - value - 1]+ "\n"
 
         # There are less than 5 values on the list so print what's on the list in order of most recent to least recent
         else:
-            for value in conversion_history_list:
+            for value in conv_history:
                 # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop
-                conversion_history_string += conversion_history_list[len(conversion_history_list) - conversion_history_list.index(value) - 1] + "\n"
+                conversion_history_string += conv_history[len(conv_history) - conv_history.index(value) - 1] + "\n"
 
 
         # Placeholder conversion history (row 2)
@@ -463,8 +464,8 @@ class Conversion_History:
         partner.conversion_history_button.config(state=NORMAL)
         self.conversion_history_box.destroy()
 
-    #def Export(self, conversion_history_list):
-        #get_export = Export(self,conversion_history_list)
+    #def Export(self, conv_history):
+        #get_export = Export(self,conv_history)
 
 
 # main routine
