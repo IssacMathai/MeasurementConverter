@@ -45,7 +45,7 @@ class Centimetres_and_Inches_Converter:
         to_in_button_background = "tomato"
 
         # Create conversion history list
-        self.conversion_history_list = []
+        conversion_history_list = []
 
         # disable Centimetres and Inches button when window is opened
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
@@ -101,8 +101,12 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.cm_and_in_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", padx=10, pady=10)
-        self.cm_and_in_history_button.grid(row=6,column=0)
+        self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(conversion_history_list), padx=10, pady=10)
+        self.conversion_history_button.grid(row=6,column=0)
+
+        # If list is empty, disable history button
+        #if len(conversion_history_list) == 0:
+            #self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
         self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
@@ -165,8 +169,8 @@ class Centimetres_and_Inches_Converter:
             
             # If there are no errors, add conversion to conversion history list
             if cm_in_errors !="yes":
-                self.conversion_history_list.append(answer)
-                #self.cm_and_in_history_button(state=NORMAL)
+                conversion_history_list.append(answer)
+                self.conversion_history_button(state=NORMAL)
             
         # If the user doesn't enter a number, display error message
         except ValueError:
@@ -185,6 +189,9 @@ class Centimetres_and_Inches_Converter:
     
     def Help(self):
         get_Help = Help(self)
+    
+    def Conversion_History(self, conversion_history_list):
+        get_Conversion_History = Conversion_History(self, conversion_history_list)
 
 class Metres_and_Feet_Converter:
     def __init__(self, partner):
@@ -195,7 +202,7 @@ class Metres_and_Feet_Converter:
         to_ft_button_background = "green"
 
         # Create conversion history list
-        self.conversion_history_list = []
+        conversion_history_list = []
 
         # disable Metres and Feet button when window is opened
         partner.m_and_ft_welcome_screen_button.config(state=DISABLED)
@@ -251,8 +258,12 @@ class Metres_and_Feet_Converter:
         self.m_and_ft_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.m_and_ft_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", padx=10, pady=10)
-        self.m_and_ft_history_button.grid(row=6,column=0)
+        self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(conversion_history_list), padx=10, pady=10)
+        self.conversion_history_button.grid(row=6,column=0)
+
+        # If list is empty, disable history button
+        #if len(conversion_history_list) == 0:
+            #self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
         self.help_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
@@ -315,8 +326,8 @@ class Metres_and_Feet_Converter:
             
             # If there are no errors, add conversion to conversion history list
             if m_ft_errors !="yes":
-                self.conversion_history_list.append(answer)
-                #self.m_and_ft_history_button(state=NORMAL)
+                conversion_history_list.append(answer)
+                self.conversion_history_button(state=NORMAL)
             
         # If the user doesn't enter a number, display error message
         except ValueError:
@@ -335,6 +346,9 @@ class Metres_and_Feet_Converter:
     
     def Help(self):
         get_Help = Help(self)
+
+    def Conversion_History(self, conversion_history_list):
+        get_Conversion_History = Conversion_History(self, conversion_history_list)
 
 class Help:
     def __init__(self, partner):
@@ -380,6 +394,77 @@ class Help:
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()        
 
+class Conversion_History:
+    def __init__(self, partner, conversion_history_list):
+
+        # Formatting variables
+        ch_background = "#f060f7"
+        export_button_background = "grey"
+        ch_dismiss_button_background = "grey"
+        conversion_history_string = "" 
+
+        # Disable Conversion History button while window is open
+        partner.conversion_history_button.config(state=DISABLED)
+
+        # Conversion History GUI child window
+        self.conversion_history_box = Toplevel()
+
+        # If users press cross at top, closes window and re-enables Conversion History button
+        self.conversion_history_box.protocol('WM_DELETE_WINDOW', partial(self.close_Conversion_History, partner))
+
+        # GUI Frame
+        self.conversion_history_frame = Frame(self.conversion_history_box, width=300, bg=ch_background)
+        self.conversion_history_frame.grid()
+
+        # Heading (row 0)
+        self.conversion_history_heading = Label(self.conversion_history_frame, text="Conversion History", font="arial 18 bold", bg=ch_background)
+        self.conversion_history_heading.grid(row=0)
+
+        # Instructions text (row 1)
+        self.conversion_history_instructions_text = Label(self.conversion_history_frame, text="Your conversion history will appear below. "
+                                                                                 "In order to export this data onto a text file, "
+                                                                                 "push the export button.", font="Arial 10 italic",
+                                                                                 justify=CENTER, bg=ch_background, wrap=350,
+                                                                                 padx=10, pady=10)
+        self.conversion_history_instructions_text.grid(row=1)
+
+        # Print most recent 5 values
+        if len(conversion_history_list) >=5:
+            for value in range(0,5):
+                # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop 
+                conversion_history_string += conversion_history_list[len(conversion_history_list) - value - 1]+ "\n"
+
+        # There are less than 5 values on the list so print what's on the list in order of most recent to least recent
+        else:
+            for value in conversion_history_list:
+                # Get length of list, print value and subtract 1 so that the next newest item will be printed in the next loop
+                conversion_history_string += conversion_history_list[len(conversion_history_list) - conversion_history_list.index(value) - 1] + "\n"
+
+
+        # Placeholder conversion history (row 2)
+        self.conversion_history_values_label = Label(self.conversion_history_frame, text=conversion_history_string,
+                                                    font="Arial 12", bg=ch_background)
+        self.conversion_history_values_label.grid(row=2)
+
+        # Export and Dismiss buttons frames
+        self.export_dismiss_buttons_frame = Frame(self.conversion_history_frame)
+        self.export_dismiss_buttons_frame.grid(row=3)
+
+        # Export button (row 3)
+        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12", bg=export_button_background)
+        self.export_button.grid(row=3)
+
+        # Dismiss button (row 3)
+        self.dismiss_button = Button(self.export_dismiss_buttons_frame, text="Dismiss", font="Arial 12", bg=ch_dismiss_button_background, command=partial(self.close_Conversion_History, partner))
+        self.dismiss_button.grid(row=3, column=1)
+
+    def close_Conversion_History(self, partner):
+        #  Restore Conversion History button in centimetres and inches converter
+        partner.conversion_history_button.config(state=NORMAL)
+        self.conversion_history_box.destroy()
+
+    #def Export(self, conversion_history_list):
+        #get_export = Export(self,conversion_history_list)
 
 
 # main routine
