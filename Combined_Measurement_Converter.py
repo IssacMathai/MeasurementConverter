@@ -193,7 +193,7 @@ class Centimetres_and_Inches_Converter:
     def Conversion_History(self, conversion_history_list):
         get_Conversion_History = Conversion_History(self, conversion_history_list)
 
-class Metres_and_Feet_Converter:
+'''class Metres_and_Feet_Converter:
     def __init__(self, partner):
         
         # Formatting variables
@@ -349,7 +349,7 @@ class Metres_and_Feet_Converter:
 
     def Conversion_History(self, conversion_history_list):
         get_Conversion_History = Conversion_History(self, conversion_history_list)
-
+'''
 class Help:
     def __init__(self, partner):
 
