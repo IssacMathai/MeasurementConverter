@@ -26,21 +26,21 @@ class Welcome_Screen:
         self.welcome_screen_buttons_frame.grid(row=1, pady=10)
 
         # Centimetres and Inches Button (row 1)
-        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Centimetres and Inches", bg=cm_and_in_button_colour, command=lambda: self.Centimetres_and_Inches_Converter(Welcome_Screen.conv_history_list), padx=10, pady=10)
+        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Centimetres and Inches", bg=cm_and_in_button_colour, command=self.Centimetres_and_Inches_Converter, padx=10, pady=10)
         self.cm_and_in_welcome_screen_button.grid(row=1, column=0)
 
         # Metres and Feet Button (row 1)
-        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", bg=m_and_ft_button_colour, command=lambda: self.Metres_and_Feet_Converter(Welcome_Screen.conv_history_list), padx=10, pady=10)
+        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", bg=m_and_ft_button_colour, command=self.Metres_and_Feet_Converter, padx=10, pady=10)
         self.m_and_ft_welcome_screen_button.grid(row=1,column=1)
     
-    def Centimetres_and_Inches_Converter(self, conv_history_list):
-        get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self, conv_history_list)
+    def Centimetres_and_Inches_Converter(self):
+        get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self)
     
-    def Metres_and_Feet_Converter(self, conv_history_list):
-        get_Metres_and_Feet_Converter = Metres_and_Feet_Converter(self, conv_history_list)
+    def Metres_and_Feet_Converter(self):
+        get_Metres_and_Feet_Converter = Metres_and_Feet_Converter(self)
 
 class Centimetres_and_Inches_Converter:
-    def __init__(self, partner, conv_history_list):
+    def __init__(self, partner):
         
         # Formatting variables
         background = "lime green"
@@ -195,7 +195,7 @@ class Centimetres_and_Inches_Converter:
         get_help = Help(self)
 
 class Metres_and_Feet_Converter:
-    def __init__(self, partner, conv_history_list):
+    def __init__(self, partner):
         
         # Formatting variables
         background = "orange"
