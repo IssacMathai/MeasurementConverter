@@ -52,7 +52,7 @@ class Centimetres_and_Inches_Converter:
         self.conversion_history_button = Button(self.cm_and_in_frame, text="Conversion History", font=("Arial", "14"), command=lambda: self.Conversion_History(conversion_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=1)
 
-        # If list is empty, print message
+        # If list is empty, disable history button
         if len(conversion_history_list) == 0:
             self.conversion_history_button.config(state=DISABLED)
 
