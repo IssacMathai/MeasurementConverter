@@ -30,11 +30,14 @@ class Welcome_Screen:
         self.cm_and_in_welcome_screen_button.grid(row=1, column=0)
 
         # Metres and Feet Button (row 1)
-        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", bg=m_and_ft_button_colour, padx=10, pady=10)
+        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", bg=m_and_ft_button_colour, command=lambda: self.Metres_and_Feet_Converter(Welcome_Screen.conv_history_list), padx=10, pady=10)
         self.m_and_ft_welcome_screen_button.grid(row=1,column=1)
     
     def Centimetres_and_Inches_Converter(self, conv_history_list):
         get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self, conv_history_list)
+    
+    def Metres_and_Feet_Converter(self, conv_history_list):
+        get_Metres_and_Feet_Converter = Metres_and_Feet_Converter(self, conv_history_list)
 
 class Centimetres_and_Inches_Converter:
     def __init__(self, partner, conv_history_list):
@@ -191,16 +194,13 @@ class Centimetres_and_Inches_Converter:
     def Help(self):
         get_help = Help(self)
 
-'''class Metres_and_Feet_Converter:
-    def __init__(self, partner):
+class Metres_and_Feet_Converter:
+    def __init__(self, partner, conv_history_list):
         
         # Formatting variables
         background = "orange"
         to_m_button_background = "dark orchid"
         to_ft_button_background = "green"
-
-        # Create conversion history list
-        conversion_history_list = []
 
         # disable Metres and Feet button when window is opened
         partner.m_and_ft_welcome_screen_button.config(state=DISABLED)
@@ -256,12 +256,12 @@ class Centimetres_and_Inches_Converter:
         self.m_and_ft_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(conversion_history_list), padx=10, pady=10)
+        self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=6,column=0)
 
         # If list is empty, disable history button
-        #if len(conversion_history_list) == 0:
-            #self.conversion_history_button.config(state=DISABLED)
+        if len(Welcome_Screen.conv_history_list) == 0:
+            self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
         self.help_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
@@ -324,8 +324,8 @@ class Centimetres_and_Inches_Converter:
             
             # If there are no errors, add conversion to conversion history list
             if m_ft_errors !="yes":
-                conversion_history_list.append(answer)
-                self.conversion_history_button(state=NORMAL)
+                Welcome_Screen.conv_history_list.append(answer)
+                self.conversion_history_button.config(state=NORMAL)
             
         # If the user doesn't enter a number, display error message
         except ValueError:
@@ -345,9 +345,9 @@ class Centimetres_and_Inches_Converter:
     def Help(self):
         get_Help = Help(self)
 
-    def Conversion_History(self, conversion_history_list):
-        get_Conversion_History = Conversion_History(self, conversion_history_list)
-'''
+    def Conversion_History(self, conv_history):
+        get_Conversion_History = Conversion_History(self, conv_history)
+
 class Help:
     def __init__(self, partner):
 
