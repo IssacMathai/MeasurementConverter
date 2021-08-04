@@ -106,7 +106,7 @@ class Centimetres_and_Inches_Converter:
             self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
-        self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", padx=10, pady=10)
+        self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
         self.help_button.grid(row=6,column=1)
 
         # Dismiss button (row 6)
@@ -187,6 +187,9 @@ class Centimetres_and_Inches_Converter:
     
     def Conversion_History(self, conv_history):
         get_Conversion_History = Conversion_History(self, conv_history)
+
+    def Help(self):
+        get_help = Help(self)
 
 '''class Metres_and_Feet_Converter:
     def __init__(self, partner):
