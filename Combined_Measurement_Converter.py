@@ -373,10 +373,10 @@ class Help:
 
         # Help text (row 1)
         self.help_text = Label(self.help_frame, text="Enter a number into the input box and then click on one of the two buttons underneath "
-                                                     "to convert the measurement. Ensure your number is greater than 0, or an error will be "
-                                                     "returned. Do not enter letters into the input box. "
-                                                     "\n\nE.g. If you wish to convert to centimetres, type in a measurement in inches and click "
-                                                     "the 'To Centimetres' button. ",
+                                                     "to convert the measurement. \n\nEnsure the number you enter is a positive number, or an error will be "
+                                                     "returned."
+                                                     "\n\nE.g. If you wish to convert from inches to centimetres, type in a number and click "
+                                                     "the 'To Centimetres' button. \n",
                                  justify=CENTER, width=60, bg=help_background, wrap=400)
         self.help_text.grid(row=1)
 
