@@ -236,11 +236,11 @@ class Metres_and_Feet_Converter:
         self.to_m_and_ft_buttons_frame.grid(row=3, pady=10)
 
         # To metres button (row 3)
-        self.to_m_button = Button(self.to_m_and_ft_buttons_frame, text="To metres", font="Arial 10 bold", bg=to_m_button_background, command=lambda: self.m_ft_convert(m_inapplicable=0, ft_inapplicable=0), padx=10, pady=10)
+        self.to_m_button = Button(self.to_m_and_ft_buttons_frame, text="To Metres", font="Arial 10 bold", bg=to_m_button_background, command=lambda: self.m_ft_convert(m_inapplicable=0, ft_inapplicable=0), padx=10, pady=10)
         self.to_m_button.grid(row=3, column=0)
 
         # To ft button (row 3)
-        self.to_ft_button = Button(self.to_m_and_ft_buttons_frame, text="To ft", font="Arial 10 bold", bg=to_ft_button_background, command=lambda: self.m_ft_convert(m_inapplicable=0, ft_inapplicable=0.0000000000000001), padx=10, pady=10)
+        self.to_ft_button = Button(self.to_m_and_ft_buttons_frame, text="To Feet", font="Arial 10 bold", bg=to_ft_button_background, command=lambda: self.m_ft_convert(m_inapplicable=0, ft_inapplicable=0.0000000000000001), padx=10, pady=10)
         self.to_ft_button.grid(row=3,column=1)
 
         # Conversion Result subheading (row 4)
