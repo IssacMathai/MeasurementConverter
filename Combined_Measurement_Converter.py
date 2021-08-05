@@ -381,7 +381,7 @@ class Help:
         self.help_text.grid(row=1)
 
         # Dismiss button (row 2)
-        self.help_button = Button(self.help_frame, text="Dismiss", bg=help_background, font="Arial 10 bold", command=partial(self.close_Help, partner), 
+        self.help_button = Button(self.help_frame, text="Dismiss", bg=help_background, width=10, font="Arial 10 bold", command=partial(self.close_Help, partner), 
                                                                                                     padx=10, pady=10)
         self.help_button.grid(row=2)
 
@@ -449,11 +449,11 @@ class Conversion_History:
         self.export_dismiss_buttons_frame.grid(row=3)
 
         # Export button (row 3)
-        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12", command=lambda: self.Export(conv_history), bg=export_button_background)
+        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12 bold", command=lambda: self.Export(conv_history), bg=export_button_background)
         self.export_button.grid(row=3)
 
         # Dismiss button (row 3)
-        self.dismiss_button = Button(self.export_dismiss_buttons_frame, text="Dismiss", font="Arial 12", bg=ch_dismiss_button_background, command=partial(self.close_Conversion_History, partner))
+        self.dismiss_button = Button(self.export_dismiss_buttons_frame, text="Dismiss", font="Arial 12 bold", bg=ch_dismiss_button_background, command=partial(self.close_Conversion_History, partner))
         self.dismiss_button.grid(row=3, column=1)
 
     def close_Conversion_History(self, partner):
@@ -489,7 +489,7 @@ class Export:
 
         # Warning text (row 1)
         self.export_warning_text = Label(self.export_frame, text = "Please note that if the filename you enter below already exists, "
-                                                                   "it will be replaced with your conversion history", justify=CENTER,
+                                                                   "it will be replaced with your conversion history.", justify=CENTER,
                                                                    bg="pink",fg="maroon", font = "Arial 10 italic", wrap=300,
                                                                    padx=10, pady=10)
         self.export_warning_text.grid(row=1, padx=10, pady=10)
