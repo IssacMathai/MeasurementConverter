@@ -26,16 +26,16 @@ class Welcome_Screen:
         self.instructions_welcome_screen_label.grid(row=1)
 
         # Welcome Screen Buttons Frame
-        self.welcome_screen_buttons_frame = Frame(self.welcome_screen_frame)
+        self.welcome_screen_buttons_frame = Frame(self.welcome_screen_frame, bg=background_colour)
         self.welcome_screen_buttons_frame.grid(row=2)
 
         # Centimetres and Inches Button (row 2)
-        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Centimetres and Inches", bg=cm_and_in_button_colour, command=self.Centimetres_and_Inches_Converter, padx=10, pady=10)
-        self.cm_and_in_welcome_screen_button.grid(row=2, column=0)
+        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Centimetres and Inches", font="Arial 10 bold", bg=cm_and_in_button_colour, command=self.Centimetres_and_Inches_Converter, padx=10, pady=10)
+        self.cm_and_in_welcome_screen_button.grid(row=2, column=0, padx=5)
 
         # Metres and Feet Button (row 2)
-        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", bg=m_and_ft_button_colour, command=self.Metres_and_Feet_Converter, padx=10, pady=10)
-        self.m_and_ft_welcome_screen_button.grid(row=2,column=1)
+        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", font="Arial 10 bold", bg=m_and_ft_button_colour, command=self.Metres_and_Feet_Converter, padx=10, pady=10)
+        self.m_and_ft_welcome_screen_button.grid(row=2,column=1, padx=5)
     
     def Centimetres_and_Inches_Converter(self):
         get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self)
@@ -81,16 +81,16 @@ class Centimetres_and_Inches_Converter:
         self.to_convert_cm_in_input.grid(row=2)
 
         # "To Convert" buttons frame
-        self.to_cm_and_in_buttons_frame = Frame(self.cm_and_in_frame)
+        self.to_cm_and_in_buttons_frame = Frame(self.cm_and_in_frame, bg=background)
         self.to_cm_and_in_buttons_frame.grid(row=3, pady=10)
 
         # To Centimetres button (row 3)
         self.to_cm_button = Button(self.to_cm_and_in_buttons_frame, text="To Centimetres", font="Arial 10 bold", bg=to_cm_button_background, command=lambda: self.cm_in_convert(cm_inapplicable=0, inch_inapplicable=0), padx=10, pady=10)
-        self.to_cm_button.grid(row=3, column=0)
+        self.to_cm_button.grid(row=3, column=0, padx=5)
 
         # To Inches button (row 3)
         self.to_in_button = Button(self.to_cm_and_in_buttons_frame, text="To Inches", font="Arial 10 bold", bg=to_in_button_background, command=lambda: self.cm_in_convert(cm_inapplicable=0, inch_inapplicable=0.0000000000000001), padx=10, pady=10)
-        self.to_in_button.grid(row=3,column=1)
+        self.to_in_button.grid(row=3,column=1, padx=5)
 
         # Conversion Result subheading (row 4)
         self.cm_and_in_result_subheading_label = Label(self.cm_and_in_frame, font="Arial 14", bg=background, pady=10, text="Conversion Result:")
@@ -101,12 +101,12 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_result_label.grid(row=5)
 
         # Conversion History, Help and Dismiss buttons frame (row 6)
-        self.cm_and_in_history_help_dismiss_buttons_frame = Frame(self.cm_and_in_frame)
+        self.cm_and_in_history_help_dismiss_buttons_frame = Frame(self.cm_and_in_frame, bg=background)
         self.cm_and_in_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
         self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
-        self.conversion_history_button.grid(row=6,column=0)
+        self.conversion_history_button.grid(row=6,column=0, padx=5)
 
         # If list is empty, disable history button
         if len(Welcome_Screen.conv_history_list) == 0:
@@ -114,7 +114,7 @@ class Centimetres_and_Inches_Converter:
 
         # Help button (row 6)
         self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
-        self.help_button.grid(row=6, column=1)
+        self.help_button.grid(row=6, column=1, padx=5)
 
         # Dismiss button (row 6)
         self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame,
@@ -122,7 +122,7 @@ class Centimetres_and_Inches_Converter:
                                                                                                  bg="grey", 
                                                                                                  command=partial(self.close_Centimetres_and_Inches_Converter, partner),
                                                                                                  padx=10, pady=10)
-        self.cm_and_in_dismiss_button.grid(row=6, column=2)
+        self.cm_and_in_dismiss_button.grid(row=6, column=2, padx=5)
 
     def close_Centimetres_and_Inches_Converter(self, partner):
         # Put "Centimetres and Inches" button in welcome screen back to normal... 
@@ -236,16 +236,16 @@ class Metres_and_Feet_Converter:
         self.to_convert_m_ft_input.grid(row=2)
 
         # "To Convert" buttons frame
-        self.to_m_and_ft_buttons_frame = Frame(self.m_and_ft_frame)
+        self.to_m_and_ft_buttons_frame = Frame(self.m_and_ft_frame, bg=background)
         self.to_m_and_ft_buttons_frame.grid(row=3, pady=10)
 
         # To metres button (row 3)
         self.to_m_button = Button(self.to_m_and_ft_buttons_frame, text="To Metres", font="Arial 10 bold", bg=to_m_button_background, command=lambda: self.m_ft_convert(m_inapplicable=0, ft_inapplicable=0), padx=10, pady=10)
-        self.to_m_button.grid(row=3, column=0)
+        self.to_m_button.grid(row=3, column=0, padx=5)
 
         # To ft button (row 3)
         self.to_ft_button = Button(self.to_m_and_ft_buttons_frame, text="To Feet", font="Arial 10 bold", bg=to_ft_button_background, command=lambda: self.m_ft_convert(m_inapplicable=0, ft_inapplicable=0.0000000000000001), padx=10, pady=10)
-        self.to_ft_button.grid(row=3,column=1)
+        self.to_ft_button.grid(row=3,column=1, padx=5)
 
         # Conversion Result subheading (row 4)
         self.m_and_ft_result_subheading_label = Label(self.m_and_ft_frame, font="Arial 14", bg=background, pady=10, text="Conversion Result:")
@@ -256,12 +256,12 @@ class Metres_and_Feet_Converter:
         self.m_and_ft_result_label.grid(row=5)
 
         # Conversion History, Help and Dismiss buttons frame (row 6)
-        self.m_and_ft_history_help_dismiss_buttons_frame = Frame(self.m_and_ft_frame)
+        self.m_and_ft_history_help_dismiss_buttons_frame = Frame(self.m_and_ft_frame, bg=background)
         self.m_and_ft_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
         self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
-        self.conversion_history_button.grid(row=6,column=0)
+        self.conversion_history_button.grid(row=6,column=0, padx=5)
 
         # If list is empty, disable history button
         if len(Welcome_Screen.conv_history_list) == 0:
@@ -269,7 +269,7 @@ class Metres_and_Feet_Converter:
 
         # Help button (row 6)
         self.help_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
-        self.help_button.grid(row=6,column=1)
+        self.help_button.grid(row=6,column=1, padx=5)
 
         # Dismiss button (row 6)
         self.m_and_ft_dismiss_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame,
@@ -277,7 +277,7 @@ class Metres_and_Feet_Converter:
                                                                                                  bg="grey", 
                                                                                                  command=partial(self.close_Metres_and_Feet_Converter, partner),
                                                                                                  padx=10, pady=10)
-        self.m_and_ft_dismiss_button.grid(row=6,column=2)
+        self.m_and_ft_dismiss_button.grid(row=6,column=2, padx=5)
 
     def close_Metres_and_Feet_Converter(self, partner):
         # Put "Metres and Feet" button in welcome screen back to normal... 
