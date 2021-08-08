@@ -356,7 +356,7 @@ class Help:
     def __init__(self, partner):
 
         # Formatting variables
-        help_background = "grey"
+        help_background = "light blue"
 
         # Disable Help button while window is open
         partner.help_button.config(state=DISABLED)
@@ -385,9 +385,8 @@ class Help:
         self.help_text.grid(row=1)
 
         # Dismiss button (row 2)
-        self.help_button = Button(self.help_frame, text="Dismiss", bg=help_background, width=10, font="Arial 10 bold", command=partial(self.close_Help, partner), 
-                                                                                                    padx=10, pady=10)
-        self.help_button.grid(row=2)
+        self.help_button = Button(self.help_frame, text="Dismiss", bg=help_background, width=10, font="Arial 10 bold", command=partial(self.close_Help, partner), padx=10, pady=10)
+        self.help_button.grid(row=2, pady=10)
 
 
 
