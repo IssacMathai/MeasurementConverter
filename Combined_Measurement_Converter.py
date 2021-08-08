@@ -114,7 +114,7 @@ class Centimetres_and_Inches_Converter:
 
         # Help button (row 6)
         self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
-        self.help_button.grid(row=6,column=1)
+        self.help_button.grid(row=6, column=1)
 
         # Dismiss button (row 6)
         self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame,
@@ -122,7 +122,7 @@ class Centimetres_and_Inches_Converter:
                                                                                                  bg="grey", 
                                                                                                  command=partial(self.close_Centimetres_and_Inches_Converter, partner),
                                                                                                  padx=10, pady=10)
-        self.cm_and_in_dismiss_button.grid(row=6,column=2)
+        self.cm_and_in_dismiss_button.grid(row=6, column=2)
 
     def close_Centimetres_and_Inches_Converter(self, partner):
         # Put "Centimetres and Inches" button in welcome screen back to normal... 
@@ -443,22 +443,18 @@ class Conversion_History:
                 conversion_history_string += conv_history[len(conv_history) - conv_history.index(value) - 1] + "\n"
 
 
-        # Placeholder conversion history (row 2)
+        # Conversion history (row 2)
         self.conversion_history_values_label = Label(self.conversion_history_frame, text=conversion_history_string,
                                                     font="Arial 12", bg=ch_background)
         self.conversion_history_values_label.grid(row=2)
 
-        # Export and Dismiss buttons frames
-        self.export_dismiss_buttons_frame = Frame(self.conversion_history_frame)
-        self.export_dismiss_buttons_frame.grid(row=3)
-
         # Export button (row 3)
-        self.export_button = Button(self.export_dismiss_buttons_frame, text="Export", font="Arial 12 bold", command=lambda: self.Export(conv_history), bg=export_button_background)
-        self.export_button.grid(row=3)
+        self.export_button = Button(self.conversion_history_frame, text="Export", font="Arial 12 bold", command=lambda: self.Export(conv_history), bg=export_button_background)
+        self.export_button.grid(row=3, sticky=SW, padx=10, pady=10)
 
         # Dismiss button (row 3)
-        self.dismiss_button = Button(self.export_dismiss_buttons_frame, text="Dismiss", font="Arial 12 bold", bg=ch_dismiss_button_background, command=partial(self.close_Conversion_History, partner))
-        self.dismiss_button.grid(row=3, column=1)
+        self.dismiss_button = Button(self.conversion_history_frame, text="Dismiss", font="Arial 12 bold", bg=ch_dismiss_button_background, command=partial(self.close_Conversion_History, partner))
+        self.dismiss_button.grid(row=3, sticky=SE, padx=10, pady=10)
 
     def close_Conversion_History(self, partner):
         #  Restore Conversion History button in centimetres and inches converter
@@ -511,17 +507,13 @@ class Export:
         self.save_error_label = Label(self.export_frame, text="", fg="red", bg=export_background)
         self.save_error_label.grid(row=4)
 
-        # Save and cancel buttons frame
-        self.save_cancel_buttons_frame = Frame(self.export_frame)
-        self.save_cancel_buttons_frame.grid(row=5, pady=10)
-
         # Save button (row 5)
-        self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 13 bold", command=partial(lambda: self.save_conversion_history(partner, conv_history)))
-        self.save_button.grid(row=5)
+        self.save_button = Button(self.export_frame, text="Save", font="Arial 13 bold", command=partial(lambda: self.save_conversion_history(partner, conv_history)))
+        self.save_button.grid(row=5, sticky=SW, padx=10, pady=10)
 
         # Cancel button (row 5)
-        self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 13 bold", command=partial(self.close_export,partner))
-        self.cancel_button.grid(row=5, column=2)
+        self.cancel_button = Button(self.export_frame, text="Cancel", font="Arial 13 bold", command=partial(self.close_export,partner))
+        self.cancel_button.grid(row=5, sticky=SE, padx=10, pady=10)
 
     def save_conversion_history(self, partner, conv_history):
         # Variables that set valid characters and if an error has been made 
@@ -570,11 +562,6 @@ class Export:
 
             # Close export window
             self.close_export(partner)
-
-
-            
-
-
 
     def close_export(self, partner):
         # Re-enable export button in Conversion History 
