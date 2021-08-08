@@ -18,20 +18,24 @@ class Welcome_Screen:
         self.welcome_screen_frame.grid()
 
         # Main Heading (row 0)
-        self.measurement_welcome_screen_label = Label(self.welcome_screen_frame, text = "Measurement Converter", font=("Arial", "20", "bold"), bg=background_colour, padx=10, pady=10)
+        self.measurement_welcome_screen_label = Label(self.welcome_screen_frame, text = "Measurement Converter", font="Arial 20 bold", bg=background_colour, padx=10)
         self.measurement_welcome_screen_label.grid(row=0)
+
+        # Welcome Screen Instructions (row 1)
+        self.instructions_welcome_screen_label = Label(self.welcome_screen_frame, text="Choose the units you will convert between below.", font="Arial 10 italic", bg=background_colour, padx=10, pady=10)
+        self.instructions_welcome_screen_label.grid(row=1)
 
         # Welcome Screen Buttons Frame
         self.welcome_screen_buttons_frame = Frame(self.welcome_screen_frame)
-        self.welcome_screen_buttons_frame.grid(row=1, pady=10)
+        self.welcome_screen_buttons_frame.grid(row=2)
 
-        # Centimetres and Inches Button (row 1)
+        # Centimetres and Inches Button (row 2)
         self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Centimetres and Inches", bg=cm_and_in_button_colour, command=self.Centimetres_and_Inches_Converter, padx=10, pady=10)
-        self.cm_and_in_welcome_screen_button.grid(row=1, column=0)
+        self.cm_and_in_welcome_screen_button.grid(row=2, column=0)
 
-        # Metres and Feet Button (row 1)
+        # Metres and Feet Button (row 2)
         self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", bg=m_and_ft_button_colour, command=self.Metres_and_Feet_Converter, padx=10, pady=10)
-        self.m_and_ft_welcome_screen_button.grid(row=1,column=1)
+        self.m_and_ft_welcome_screen_button.grid(row=2,column=1)
     
     def Centimetres_and_Inches_Converter(self):
         get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self)
@@ -385,8 +389,6 @@ class Help:
                                                                                                     padx=10, pady=10)
         self.help_button.grid(row=2)
 
-
-
     def close_Help(self, partner):
         # Restore Help button in measurement converter
         partner.help_button.config(state=NORMAL)
@@ -561,11 +563,6 @@ class Export:
 
             # Close export window
             self.close_export(partner)
-
-
-            
-
-
 
     def close_export(self, partner):
         # Re-enable export button in Conversion History 
