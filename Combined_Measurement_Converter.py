@@ -389,6 +389,8 @@ class Help:
                                                                                                     padx=10, pady=10)
         self.help_button.grid(row=2)
 
+
+
     def close_Help(self, partner):
         # Restore Help button in measurement converter
         partner.help_button.config(state=NORMAL)
@@ -489,32 +491,37 @@ class Export:
         self.export_heading = Label(self.export_frame, text="Export Conversion History", font="Arial 18 bold", bg=export_background)
         self.export_heading.grid(row=0)
 
-        # Warning text (row 1)
+        # Export Instructions (row 1)
+        self.export_instructions = Label(self.export_frame, text="Enter a filename below and push the Save button to export your conversion history onto a text file.",
+                                                            font = "Arial 10 italic", wrap=300, bg=export_background)
+        self.export_instructions.grid(row=1)
+
+        # Warning text (row 2)
         self.export_warning_text = Label(self.export_frame, text = "Please note that if the filename you enter below already exists, "
                                                                    "it will be replaced with your conversion history.", justify=CENTER,
                                                                    bg="pink",fg="maroon", font = "Arial 10 italic bold", wrap=300,
                                                                    padx=10, pady=10)
-        self.export_warning_text.grid(row=1, padx=10, pady=10)
+        self.export_warning_text.grid(row=2, padx=10, pady=10)
 
-        # Input box (row 2)
+        # Input box (row 3)
         self.filename_input_box = Entry(self.export_frame, width=31, font="arial 12 bold")
-        self.filename_input_box.grid(row=2, pady=10)
+        self.filename_input_box.grid(row=3, pady=10)
 
-        # Error messages (row 3)
+        # Error messages (row 4)
         self.save_error_label = Label(self.export_frame, text="", fg="red", bg=export_background)
-        self.save_error_label.grid(row=3)
+        self.save_error_label.grid(row=4)
 
         # Save and cancel buttons frame
         self.save_cancel_buttons_frame = Frame(self.export_frame)
-        self.save_cancel_buttons_frame.grid(row=4, pady=10)
+        self.save_cancel_buttons_frame.grid(row=5, pady=10)
 
-        # Save button (row 4)
+        # Save button (row 5)
         self.save_button = Button(self.save_cancel_buttons_frame, text="Save", font="Arial 13 bold", command=partial(lambda: self.save_conversion_history(partner, conv_history)))
-        self.save_button.grid(row=4)
+        self.save_button.grid(row=5)
 
-        # Cancel button (row 4)
+        # Cancel button (row 5)
         self.cancel_button = Button(self.save_cancel_buttons_frame, text="Cancel", font="Arial 13 bold", command=partial(self.close_export,partner))
-        self.cancel_button.grid(row=4, column=2)
+        self.cancel_button.grid(row=5, column=2)
 
     def save_conversion_history(self, partner, conv_history):
         # Variables that set valid characters and if an error has been made 
@@ -563,6 +570,11 @@ class Export:
 
             # Close export window
             self.close_export(partner)
+
+
+            
+
+
 
     def close_export(self, partner):
         # Re-enable export button in Conversion History 
