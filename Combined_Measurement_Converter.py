@@ -105,7 +105,7 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
+        self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=6,column=0, padx=5)
 
         # If list is empty, disable history button
@@ -113,15 +113,11 @@ class Centimetres_and_Inches_Converter:
             self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
-        self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
+        self.help_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", command=self.Help, padx=10, pady=10)
         self.help_button.grid(row=6, column=1, padx=5)
 
         # Dismiss button (row 6)
-        self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame,
-                                                                                                 text="Dismiss", font="Arial 10 bold", 
-                                                                                                 bg="grey", 
-                                                                                                 command=partial(self.close_Centimetres_and_Inches_Converter, partner),
-                                                                                                 padx=10, pady=10)
+        self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", command=partial(self.close_Centimetres_and_Inches_Converter, partner), padx=10, pady=10)
         self.cm_and_in_dismiss_button.grid(row=6, column=2, padx=5)
 
     def close_Centimetres_and_Inches_Converter(self, partner):
@@ -260,7 +256,7 @@ class Metres_and_Feet_Converter:
         self.m_and_ft_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", bg="grey", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
+        self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=6,column=0, padx=5)
 
         # If list is empty, disable history button
@@ -268,15 +264,11 @@ class Metres_and_Feet_Converter:
             self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
-        self.help_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", bg="grey", command=self.Help, padx=10, pady=10)
+        self.help_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Help", font="Arial 10 bold", command=self.Help, padx=10, pady=10)
         self.help_button.grid(row=6,column=1, padx=5)
 
         # Dismiss button (row 6)
-        self.m_and_ft_dismiss_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame,
-                                                                                                 text="Dismiss", font="Arial 10 bold", 
-                                                                                                 bg="grey", 
-                                                                                                 command=partial(self.close_Metres_and_Feet_Converter, partner),
-                                                                                                 padx=10, pady=10)
+        self.m_and_ft_dismiss_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", command=partial(self.close_Metres_and_Feet_Converter, partner), padx=10, pady=10)
         self.m_and_ft_dismiss_button.grid(row=6,column=2, padx=5)
 
     def close_Metres_and_Feet_Converter(self, partner):
@@ -400,8 +392,6 @@ class Conversion_History:
 
         # Formatting variables
         ch_background = "#f060f7"
-        export_button_background = "grey"
-        ch_dismiss_button_background = "grey"
         conversion_history_string = "" 
 
         # Disable Conversion History button while window is open
@@ -448,11 +438,11 @@ class Conversion_History:
         self.conversion_history_values_label.grid(row=2)
 
         # Export button (row 3)
-        self.export_button = Button(self.conversion_history_frame, text="Export", font="Arial 12 bold", command=lambda: self.Export(conv_history), bg=export_button_background)
+        self.export_button = Button(self.conversion_history_frame, text="Export", font="Arial 12 bold", command=lambda: self.Export(conv_history))
         self.export_button.grid(row=3, sticky=SW, padx=10, pady=10)
 
         # Dismiss button (row 3)
-        self.dismiss_button = Button(self.conversion_history_frame, text="Dismiss", font="Arial 12 bold", bg=ch_dismiss_button_background, command=partial(self.close_Conversion_History, partner))
+        self.dismiss_button = Button(self.conversion_history_frame, text="Dismiss", font="Arial 12 bold", command=partial(self.close_Conversion_History, partner))
         self.dismiss_button.grid(row=3, sticky=SE, padx=10, pady=10)
 
     def close_Conversion_History(self, partner):
