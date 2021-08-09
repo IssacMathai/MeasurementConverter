@@ -383,8 +383,9 @@ class Help:
 
 
     def close_Help(self, partner):
-        # Restore Help button in measurement converter
-        partner.help_button.config(state=NORMAL)
+        # Restore Help button in measurement converter if the measurement converter window is still open
+        if partner.conversion_history_button.winfo_exists():
+            partner.help_button.config(state=NORMAL)
         self.help_box.destroy()        
 
 class Conversion_History:
@@ -446,8 +447,9 @@ class Conversion_History:
         self.dismiss_button.grid(row=3, sticky=SE, padx=10, pady=10)
 
     def close_Conversion_History(self, partner):
-        #  Restore Conversion History button in centimetres and inches converter
-        partner.conversion_history_button.config(state=NORMAL)
+        #  Restore Conversion History button in centimetres and inches converter if the window is still open
+        if partner.conversion_history_button.winfo_exists():
+            partner.conversion_history_button.config(state=NORMAL)
         self.conversion_history_box.destroy()
 
     def Export(self, conv_history):
@@ -553,8 +555,9 @@ class Export:
             self.close_export(partner)
 
     def close_export(self, partner):
-        # Re-enable export button in Conversion History 
-        partner.export_button.config(state=NORMAL)
+        # Re-enable export button in Conversion History if the Conversion History window is still open
+        if partner.export_button.winfo_exists():     
+            partner.export_button.config(state=NORMAL)
         self.export_box.destroy() 
 
 
