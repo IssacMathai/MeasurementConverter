@@ -49,7 +49,7 @@ class Centimetres_and_Inches_Converter:
         # Formatting variables
         background = "lime green"
         to_cm_button_background = "yellow"
-        to_in_button_background = "tomato"
+        to_in_button_background = "#e9d3f2"
 
         # disable Centimetres and Inches button when window is opened
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
@@ -199,8 +199,8 @@ class Metres_and_Feet_Converter:
         
         # Formatting variables
         background = "orange"
-        to_m_button_background = "dark orchid"
-        to_ft_button_background = "green"
+        to_m_button_background = "yellow"
+        to_ft_button_background = "#e9d3f2"
 
         # disable Metres and Feet button when window is opened
         partner.m_and_ft_welcome_screen_button.config(state=DISABLED)
