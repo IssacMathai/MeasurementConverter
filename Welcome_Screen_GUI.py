@@ -27,7 +27,7 @@ class Welcome_Screen:
         self.cm_and_in_welcome_screen_button.grid(row=1, column=0)
 
         # Metres and Feet Button (row 1)
-        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", bg=m_and_ft_button_colour, padx=10, pady=10)
+        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Feet", bg=m_and_ft_button_colour, padx=10, pady=10)
         self.m_and_ft_welcome_screen_button.grid(row=1,column=1)
 
 
