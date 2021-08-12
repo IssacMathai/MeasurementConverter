@@ -189,7 +189,6 @@ class CentimetresAndInchesConverter:
                 rounded = round(to_round, 2)
             return rounded
     
-    
     def ConversionHistory(self, conv_history):
         get_ConversionHistory = ConversionHistory(self, conv_history)
 
