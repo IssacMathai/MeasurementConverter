@@ -3,7 +3,7 @@ from functools import partial
 import random, re
 
 
-class Welcome_Screen:
+class WelcomeScreen:
     def __init__(self, parent):
         # Formatting variables
         background_colour = "light blue"
@@ -11,7 +11,7 @@ class Welcome_Screen:
         m_and_ft_button_colour = "orange"
 
         # Create conversion history list
-        Welcome_Screen.conv_history_list = []
+        WelcomeScreen.conv_history_list = []
 
         # Frame
         self.welcome_screen_frame = Frame(width=200, height=200, bg=background_colour, pady=10)
@@ -30,20 +30,20 @@ class Welcome_Screen:
         self.welcome_screen_buttons_frame.grid(row=2)
 
         # Centimetres and Inches Button (row 2)
-        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Centimetres and Inches", font="Arial 10 bold", bg=cm_and_in_button_colour, command=self.Centimetres_and_Inches_Converter, padx=10, pady=10)
+        self.cm_and_in_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Centimetres and Inches", font="Arial 10 bold", bg=cm_and_in_button_colour, command=self.CentimetresAndInchesConverter, padx=10, pady=10)
         self.cm_and_in_welcome_screen_button.grid(row=2, column=0, padx=5)
 
         # Metres and Feet Button (row 2)
-        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Feet", font="Arial 10 bold", bg=m_and_ft_button_colour, command=self.Metres_and_Feet_Converter, padx=10, pady=10)
+        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Feet", font="Arial 10 bold", bg=m_and_ft_button_colour, command=self.MetresAndFeetConverter, padx=10, pady=10)
         self.m_and_ft_welcome_screen_button.grid(row=2,column=1, padx=5)
     
-    def Centimetres_and_Inches_Converter(self):
-        get_Centimetres_and_Inches_Converter = Centimetres_and_Inches_Converter(self)
+    def CentimetresAndInchesConverter(self):
+        get_CentimetresAndInchesConverter = CentimetresAndInchesConverter(self)
     
-    def Metres_and_Feet_Converter(self):
-        get_Metres_and_Feet_Converter = Metres_and_Feet_Converter(self)
+    def MetresAndFeetConverter(self):
+        get_MetresAndFeetConverter = MetresAndFeetConverter(self)
 
-class Centimetres_and_Inches_Converter:
+class CentimetresAndInchesConverter:
     def __init__(self, partner):
         
         # Formatting variables
@@ -59,7 +59,7 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_box = Toplevel()
         
         # If users press cross at top, closes window and re-enables Centimetres and Inches button
-        self.cm_and_in_box.protocol('WM_DELETE_WINDOW', partial(self.close_Centimetres_and_Inches_Converter, partner))
+        self.cm_and_in_box.protocol('WM_DELETE_WINDOW', partial(self.close_CentimetresAndInchesConverter, partner))
 
         # GUI Frame
         self.cm_and_in_frame = Frame(self.cm_and_in_box, bg=background)
@@ -106,11 +106,11 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
+        self.conversion_history_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", command=lambda: self.ConversionHistory(WelcomeScreen.conv_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=6,column=0, padx=5)
 
         # If list is empty, disable history button
-        if len(Welcome_Screen.conv_history_list) == 0:
+        if len(WelcomeScreen.conv_history_list) == 0:
             self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
@@ -118,10 +118,10 @@ class Centimetres_and_Inches_Converter:
         self.help_button.grid(row=6, column=1, padx=5)
 
         # Dismiss button (row 6)
-        self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", command=partial(self.close_Centimetres_and_Inches_Converter, partner), padx=10, pady=10)
+        self.cm_and_in_dismiss_button = Button(self.cm_and_in_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", command=partial(self.close_CentimetresAndInchesConverter, partner), padx=10, pady=10)
         self.cm_and_in_dismiss_button.grid(row=6, column=2, padx=5)
 
-    def close_Centimetres_and_Inches_Converter(self, partner):
+    def close_CentimetresAndInchesConverter(self, partner):
         # Restore converter buttons in welcome screen
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         partner.m_and_ft_welcome_screen_button.config(state=NORMAL)
@@ -171,7 +171,7 @@ class Centimetres_and_Inches_Converter:
             
             # If there are no errors, add conversion to conversion history list
             if cm_in_errors !="yes":
-                Welcome_Screen.conv_history_list.append(answer)
+                WelcomeScreen.conv_history_list.append(answer)
                 self.conversion_history_button.config(state=NORMAL)
             
         # If the user doesn't enter a number, display error message
@@ -190,13 +190,13 @@ class Centimetres_and_Inches_Converter:
             return rounded
     
     
-    def Conversion_History(self, conv_history):
-        get_Conversion_History = Conversion_History(self, conv_history)
+    def ConversionHistory(self, conv_history):
+        get_ConversionHistory = ConversionHistory(self, conv_history)
 
     def Help(self):
         get_help = Help(self)
 
-class Metres_and_Feet_Converter:
+class MetresAndFeetConverter:
     def __init__(self, partner):
         
         # Formatting variables
@@ -212,7 +212,7 @@ class Metres_and_Feet_Converter:
         self.m_and_ft_box = Toplevel()
         
         # If users press cross at top, closes window and re-enables Metres and Feet button
-        self.m_and_ft_box.protocol('WM_DELETE_WINDOW', partial(self.close_Metres_and_Feet_Converter, partner))
+        self.m_and_ft_box.protocol('WM_DELETE_WINDOW', partial(self.close_MetresAndFeetConverter, partner))
 
         # GUI Frame
         self.m_and_ft_frame = Frame(self.m_and_ft_box, bg=background)
@@ -259,11 +259,11 @@ class Metres_and_Feet_Converter:
         self.m_and_ft_history_help_dismiss_buttons_frame.grid(row=6, pady=10)
 
         # Conversion History button (row 6)
-        self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", command=lambda: self.Conversion_History(Welcome_Screen.conv_history_list), padx=10, pady=10)
+        self.conversion_history_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Conversion History", font="Arial 10 bold", command=lambda: self.ConversionHistory(WelcomeScreen.conv_history_list), padx=10, pady=10)
         self.conversion_history_button.grid(row=6,column=0, padx=5)
 
         # If list is empty, disable history button
-        if len(Welcome_Screen.conv_history_list) == 0:
+        if len(WelcomeScreen.conv_history_list) == 0:
             self.conversion_history_button.config(state=DISABLED)
 
         # Help button (row 6)
@@ -271,10 +271,10 @@ class Metres_and_Feet_Converter:
         self.help_button.grid(row=6,column=1, padx=5)
 
         # Dismiss button (row 6)
-        self.m_and_ft_dismiss_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", command=partial(self.close_Metres_and_Feet_Converter, partner), padx=10, pady=10)
+        self.m_and_ft_dismiss_button = Button(self.m_and_ft_history_help_dismiss_buttons_frame, text="Dismiss", font="Arial 10 bold", command=partial(self.close_MetresAndFeetConverter, partner), padx=10, pady=10)
         self.m_and_ft_dismiss_button.grid(row=6,column=2, padx=5)
 
-    def close_Metres_and_Feet_Converter(self, partner):
+    def close_MetresAndFeetConverter(self, partner):
         # Restore converter buttons in welcome screen 
         partner.m_and_ft_welcome_screen_button.config(state=NORMAL)
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
@@ -324,7 +324,7 @@ class Metres_and_Feet_Converter:
             
             # If there are no errors, add conversion to conversion history list
             if m_ft_errors !="yes":
-                Welcome_Screen.conv_history_list.append(answer)
+                WelcomeScreen.conv_history_list.append(answer)
                 self.conversion_history_button.config(state=NORMAL)
             
         # If the user doesn't enter a number, display error message
@@ -345,8 +345,8 @@ class Metres_and_Feet_Converter:
     def Help(self):
         get_Help = Help(self)
 
-    def Conversion_History(self, conv_history):
-        get_Conversion_History = Conversion_History(self, conv_history)
+    def ConversionHistory(self, conv_history):
+        get_ConversionHistory = ConversionHistory(self, conv_history)
 
 class Help:
     def __init__(self, partner):
@@ -392,7 +392,7 @@ class Help:
             partner.help_button.config(state=NORMAL)
         self.help_box.destroy()        
 
-class Conversion_History:
+class ConversionHistory:
     def __init__(self, partner, conv_history):
 
         # Formatting variables
@@ -406,7 +406,7 @@ class Conversion_History:
         self.conversion_history_box = Toplevel()
 
         # If users press cross at top, closes window and re-enables Conversion History button
-        self.conversion_history_box.protocol('WM_DELETE_WINDOW', partial(self.close_Conversion_History, partner))
+        self.conversion_history_box.protocol('WM_DELETE_WINDOW', partial(self.close_ConversionHistory, partner))
 
         # GUI Frame
         self.conversion_history_frame = Frame(self.conversion_history_box, width=300, bg=ch_background)
@@ -447,10 +447,10 @@ class Conversion_History:
         self.export_button.grid(row=3, sticky=SW, padx=10, pady=10)
 
         # Dismiss button (row 3)
-        self.dismiss_button = Button(self.conversion_history_frame, text="Dismiss", font="Arial 12 bold", command=partial(self.close_Conversion_History, partner))
+        self.dismiss_button = Button(self.conversion_history_frame, text="Dismiss", font="Arial 12 bold", command=partial(self.close_ConversionHistory, partner))
         self.dismiss_button.grid(row=3, sticky=SE, padx=10, pady=10)
 
-    def close_Conversion_History(self, partner):
+    def close_ConversionHistory(self, partner):
         #  Restore Conversion History button in centimetres and inches converter if the window is still open
         if partner.conversion_history_button.winfo_exists():
             partner.conversion_history_button.config(state=NORMAL)
@@ -569,5 +569,5 @@ class Export:
 if __name__ == "__main__":
     root = Tk()
     root.title("Measurement Converter Tool")
-    something = Welcome_Screen(root)
+    something = WelcomeScreen(root)
     root.mainloop()                                 
