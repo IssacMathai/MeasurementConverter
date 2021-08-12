@@ -1,6 +1,6 @@
 from tkinter import *
 from functools import partial 
-import random, re
+import re
 
 
 class WelcomeScreen:
