@@ -34,7 +34,7 @@ class Welcome_Screen:
         self.cm_and_in_welcome_screen_button.grid(row=2, column=0, padx=5)
 
         # Metres and Feet Button (row 2)
-        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Inches", font="Arial 10 bold", bg=m_and_ft_button_colour, command=self.Metres_and_Feet_Converter, padx=10, pady=10)
+        self.m_and_ft_welcome_screen_button = Button(self.welcome_screen_buttons_frame, text="Metres and Feet", font="Arial 10 bold", bg=m_and_ft_button_colour, command=self.Metres_and_Feet_Converter, padx=10, pady=10)
         self.m_and_ft_welcome_screen_button.grid(row=2,column=1, padx=5)
     
     def Centimetres_and_Inches_Converter(self):
@@ -121,7 +121,7 @@ class Centimetres_and_Inches_Converter:
         self.cm_and_in_dismiss_button.grid(row=6, column=2, padx=5)
 
     def close_Centimetres_and_Inches_Converter(self, partner):
-        # Put "Centimetres and Inches" button in welcome screen back to normal... 
+        # Restore "Centimetres and Inches" button in welcome screen
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
     
@@ -272,7 +272,7 @@ class Metres_and_Feet_Converter:
         self.m_and_ft_dismiss_button.grid(row=6,column=2, padx=5)
 
     def close_Metres_and_Feet_Converter(self, partner):
-        # Put "Metres and Feet" button in welcome screen back to normal... 
+        # Restore "Metres and Feet" button in welcome screen 
         partner.m_and_ft_welcome_screen_button.config(state=NORMAL)
         self.m_and_ft_box.destroy()
     
@@ -384,7 +384,7 @@ class Help:
 
     def close_Help(self, partner):
         # Restore Help button in measurement converter if the measurement converter window is still open
-        if partner.conversion_history_button.winfo_exists():
+        if partner.help_button.winfo_exists():
             partner.help_button.config(state=NORMAL)
         self.help_box.destroy()        
 
