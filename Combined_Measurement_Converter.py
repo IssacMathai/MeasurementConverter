@@ -53,6 +53,7 @@ class Centimetres_and_Inches_Converter:
 
         # disable Centimetres and Inches button when window is opened
         partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
+        partner.m_and_ft_welcome_screen_button.config(state=DISABLED)
 
         # Centimetres and Inches Converter child window
         self.cm_and_in_box = Toplevel()
@@ -123,6 +124,7 @@ class Centimetres_and_Inches_Converter:
     def close_Centimetres_and_Inches_Converter(self, partner):
         # Restore "Centimetres and Inches" button in welcome screen
         partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
+        partner.m_and_ft_welcome_screen_button.config(state=NORMAL)
         self.cm_and_in_box.destroy()
     
     def cm_in_convert(self, inch_inapplicable, cm_inapplicable):
@@ -204,6 +206,7 @@ class Metres_and_Feet_Converter:
 
         # disable Metres and Feet button when window is opened
         partner.m_and_ft_welcome_screen_button.config(state=DISABLED)
+        partner.cm_and_in_welcome_screen_button.config(state=DISABLED)
 
         # Metres and Feet Converter child window
         self.m_and_ft_box = Toplevel()
@@ -274,6 +277,7 @@ class Metres_and_Feet_Converter:
     def close_Metres_and_Feet_Converter(self, partner):
         # Restore "Metres and Feet" button in welcome screen 
         partner.m_and_ft_welcome_screen_button.config(state=NORMAL)
+        partner.cm_and_in_welcome_screen_button.config(state=NORMAL)
         self.m_and_ft_box.destroy()
     
     def m_ft_convert(self, ft_inapplicable, m_inapplicable):
