@@ -7,7 +7,7 @@ This was created for a Digital Technologies internal assessment while in Year 13
 
 The code is structured around each GUI window having its own class. This allowed for readability and simpler bug fixing as each section was modularised.
 
-My biggest challenge while developing this was making sure that you couldn't keep clicking buttons in windows 'underneath' the window you were in. 
+My biggest challenge while developing this was making sure that the user couldn't keep clicking buttons in windows 'underneath' the user's current window. 
 
 **Dependencies:**
 * tkinter
