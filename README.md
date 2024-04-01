@@ -1,4 +1,4 @@
-# MeasurementConverter
+# Measurement Converter
 A Python application developed using tkinter for the user interface.
 Allows unit conversion between centimetres & inches as well as between metres & feet.
 The history of conversions can be exported as a text file.
