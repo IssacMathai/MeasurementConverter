@@ -3,7 +3,7 @@ A Python application developed using tkinter for the user interface.
 Allows unit conversion between centimetres & inches as well as between metres & feet.
 The history of conversions can be exported as a text file.
 
-This was created for a Digital Technologies internal assessment while in Year 13. 
+This was created over the course of three months for a Year 13 Digital Technologies internal assessment. 
 
 The code is structured around each GUI window having its own class. This allowed for readability and simpler bug fixing as each section was modularised.
 
